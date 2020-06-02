@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<KnowledgeBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domains>
+    <Domain>
+      <Name>Domain1</Name>
+      <Values>
+        <DomainValue>
+          <IsUsed>false</IsUsed>
+          <Value>eqwweqwe</Value>
+        </DomainValue>
+      </Values>
+    </Domain>
+    <Domain>
+      <Name>Domain0</Name>
+      <Values>
+        <DomainValue>
+          <IsUsed>false</IsUsed>
+          <Value>rwe
+rwertwe
+</Value>
+        </DomainValue>
+        <DomainValue>
+          <IsUsed>false</IsUsed>
+          <Value>rwertwe
+erwe
+w</Value>
+        </DomainValue>
+        <DomainValue>
+          <IsUsed>false</IsUsed>
+          <Value>rwertwe
+</Value>
+        </DomainValue>
+      </Values>
+    </Domain>
+  </Domains>
+  <Vars>
+    <Variable>
+      <Name>Var2</Name>
+      <Domain>
+        <Name>Domain1</Name>
+        <Values>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>eqwweqwe</Value>
+          </DomainValue>
+        </Values>
+      </Domain>
+      <Question>Var2?eqweqw</Question>
+      <Type>QueryConclusion</Type>
+      <IsUsed>false</IsUsed>
+    </Variable>
+    <Variable>
+      <Name>Var1</Name>
+      <Domain>
+        <Name>Domain0</Name>
+        <Values>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>rwe
+rwertwe
+</Value>
+          </DomainValue>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>rwertwe
+erwe
+w</Value>
+          </DomainValue>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>rwertwe
+</Value>
+          </DomainValue>
+        </Values>
+      </Domain>
+      <Question>Var1?</Question>
+      <Type>Conclusion</Type>
+      <IsUsed>false</IsUsed>
+    </Variable>
+    <Variable>
+      <Name>Var0</Name>
+      <Domain>
+        <Name>Domain0</Name>
+        <Values>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>rwe
+rwertwe
+</Value>
+          </DomainValue>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>rwertwe
+erwe
+w</Value>
+          </DomainValue>
+          <DomainValue>
+            <IsUsed>false</IsUsed>
+            <Value>rwertwe
+</Value>
+          </DomainValue>
+        </Values>
+      </Domain>
+      <Question>Var0?</Question>
+      <Type>Query</Type>
+      <IsUsed>false</IsUsed>
+    </Variable>
+  </Vars>
+  <Rules>
+    <Rule>
+      <Name>Rule1</Name>
+      <Premise>
+        <Fact>
+          <Variable>
+            <Name>Var0</Name>
+            <Domain>
+              <Name>Domain0</Name>
+              <Values>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwe
+rwertwe
+</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+erwe
+w</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+</Value>
+                </DomainValue>
+              </Values>
+            </Domain>
+            <Question>Var0?</Question>
+            <Type>Query</Type>
+            <IsUsed>false</IsUsed>
+          </Variable>
+          <Value>rwe
+rwertwe
+</Value>
+        </Fact>
+      </Premise>
+      <Conclusion>
+        <Fact>
+          <Variable>
+            <Name>Var1</Name>
+            <Domain>
+              <Name>Domain0</Name>
+              <Values>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwe
+rwertwe
+</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+erwe
+w</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+</Value>
+                </DomainValue>
+              </Values>
+            </Domain>
+            <Question>Var1?</Question>
+            <Type>Conclusion</Type>
+            <IsUsed>false</IsUsed>
+          </Variable>
+          <Value>rwe
+rwertwe
+</Value>
+        </Fact>
+      </Conclusion>
+      <Reason>rrrr2</Reason>
+    </Rule>
+    <Rule>
+      <Name>Rule0</Name>
+      <Premise>
+        <Fact>
+          <Variable>
+            <Name>Var0</Name>
+            <Domain>
+              <Name>Domain0</Name>
+              <Values>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwe
+rwertwe
+</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+erwe
+w</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+</Value>
+                </DomainValue>
+              </Values>
+            </Domain>
+            <Question>Var0?</Question>
+            <Type>Query</Type>
+            <IsUsed>false</IsUsed>
+          </Variable>
+          <Value>rwe
+rwertwe
+</Value>
+        </Fact>
+      </Premise>
+      <Conclusion>
+        <Fact>
+          <Variable>
+            <Name>Var1</Name>
+            <Domain>
+              <Name>Domain0</Name>
+              <Values>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwe
+rwertwe
+</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+erwe
+w</Value>
+                </DomainValue>
+                <DomainValue>
+                  <IsUsed>false</IsUsed>
+                  <Value>rwertwe
+</Value>
+                </DomainValue>
+              </Values>
+            </Domain>
+            <Question>Var1?</Question>
+            <Type>Conclusion</Type>
+            <IsUsed>false</IsUsed>
+          </Variable>
+          <Value>rwe
+rwertwe
+</Value>
+        </Fact>
+      </Conclusion>
+      <Reason>rr1</Reason>
+    </Rule>
+  </Rules>
+</KnowledgeBase>
