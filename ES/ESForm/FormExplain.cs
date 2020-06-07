@@ -8,11 +8,11 @@ namespace ES.ESForm
 {
     public partial class FormExplain : Form
     {
-        ExplainNode _explainTree;
-        List<UserAskLog> _logs;
-        List<Statement> _knownFacts;
+        private readonly ExplainNode _explainTree;
+        private readonly List<Log> _logs;
+        private readonly List<Statement> _knownFacts;
 
-        public FormExplain(ExplainNode explainTree, List<UserAskLog> logs, List<Statement> knownFacts)
+        public FormExplain(ExplainNode explainTree, List<Log> logs, List<Statement> knownFacts)
         {
             InitializeComponent();
             SetStyle();
@@ -23,7 +23,7 @@ namespace ES.ESForm
             CenterToScreen();
         }
 
-        void FillForm()
+        private void FillForm()
         {
             foreach(var log in _logs)
             {
@@ -42,25 +42,25 @@ namespace ES.ESForm
             treeViewExplain.EndUpdate();
         }
 
-        void AddNodesToTreeView(TreeNode tree, ExplainNode node)
+        static void AddNodesToTreeView(TreeNode tree, ExplainNode node)
         {
             if (node.Asked)
             {
-                tree.Nodes.Add("Цель: " + node.Goal + " (запрошено)");
+                tree.Nodes.Add($"Goal: {node.Goal} (queried)");
             }
             else
             {
-                tree.Nodes.Add("Цель: " + node.Goal + " (выведено)");
-                tree.Nodes[tree.Nodes.Count - 1].Nodes.Add("ЕСЛИ " + node.FiredRule.PrintPremise());
-                tree.Nodes[tree.Nodes.Count - 1].Nodes.Add("ТОГДА " + node.FiredRule.PrintConclusion());
-                foreach(var potomok in node.SubGoals)
+                tree.Nodes.Add($"Goal: {node.Goal} (deducted)");
+                tree.Nodes[tree.Nodes.Count - 1].Nodes.Add($"IF {node.FiredRule.PrintPremise()}");
+                tree.Nodes[tree.Nodes.Count - 1].Nodes.Add($"THEN {node.FiredRule.PrintConclusion()}");
+                foreach(var child in node.SubGoals)
                 {
-                    AddNodesToTreeView(tree.Nodes[tree.Nodes.Count - 1], potomok);
+                    AddNodesToTreeView(tree.Nodes[tree.Nodes.Count - 1], child);
                 }
             }
         }
 
-        void ExpandTreeView(TreeNode tree)
+        private static void ExpandTreeView(TreeNode tree)
         {
             tree.Expand();
             foreach (TreeNode node in tree.Nodes)

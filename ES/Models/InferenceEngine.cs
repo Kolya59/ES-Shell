@@ -11,13 +11,13 @@ namespace ES.Models
         private readonly KnowledgeBase _kBase;
         private Variable PrimaryGoal { get; set; }
         private Stack<Variable> _goals;
-        private List<Rule> _firedRules;
+        private List<Rule> _executedRules;
         private List<Rule> _wrongRules;
         private List<ExplainNode> _explainNodes;
 
-        public ExplainNode ExplainTree { get; set; }
-        public List<UserAskLog> userAskLogs;
-        public List<Statement> KnownFacts { get; set; }
+        public ExplainNode ExplainTree { get; private set; }
+        public List<Log> log;
+        public List<Statement> Statements { get; private set; }
         public InferenceEngine(KnowledgeBase kBase)
         {
             _kBase = kBase;
@@ -27,99 +27,92 @@ namespace ES.Models
         {
             PrimaryGoal = primaryGoal;
         }
-        
+
         public Statement Start()
         {
-            if (PrimaryGoal == null)
-                throw new Exception("primary goal does not set");
+            if (PrimaryGoal == null) { throw new Exception("primary goal does not set"); }
 
             _goals = new Stack<Variable>();
-            KnownFacts = new List<Statement>();
-            _firedRules = new List<Rule>();
+            Statements = new List<Statement>();
+            _executedRules = new List<Rule>();
             _wrongRules = new List<Rule>();
-            userAskLogs = new List<UserAskLog>();
+            log = new List<Log>();
             _explainNodes = new List<ExplainNode>();
             _goals.Push(PrimaryGoal);
+            // Пока не означены все целевые переменные
             while(_goals.Count > 0)
             {
+                // Получаем очередную цель
                 var currentGoal = _goals.Peek();
-                //если уже известна, то удалить
-                if (KnownFacts.Find(x => x.Variable.Name == currentGoal.Name) != null)
+                // Если целевая переменная означена - переходим к следующей
+                if (Statements.Find(x => x.Variable.Name == currentGoal.Name) != null)
                 {
                     _goals.Pop();
                     continue;
                 }
-                //если запрашиваемая, то запросить значение
-                if (currentGoal.Type == VariableType.query)
+                // Если целевая переменная запрашиваемая - запрашиваем
+                if (currentGoal.Type == VariableType.queried)
                 {
-                    var fact = new Statement();
-                    fact.Variable = currentGoal;
-                    var f = new FormAsk(fact);
-                    if (DialogResult.OK != f.ShowDialog()) return null;
+                    var statement = new Statement {Variable = currentGoal};
+                    if (DialogResult.OK != new FormAsk(statement).ShowDialog()) return null;
                     _goals.Pop();
-                    KnownFacts.Add(fact);
-                    userAskLogs.Add(new UserAskLog(fact.Variable.Question, fact.Value));
-                    AddNewExplainNodeAsked(fact);
+                    Statements.Add(statement);
+                    log.Add(new Log(statement.Variable.Question, statement.Value));
+                    AddNewExplainNodeAsked(statement);
                     continue;
                 }
 
-                //если нет, то 
-                //искать среди правил, где эта переменная в заключении
-                var r = _kBase.Rules.Find(x => 
-                                    x.Conclusion.Find(c => 
-                                    c.Variable.Name == currentGoal.Name) != null &&
-                                    !_firedRules.Contains(x) &&
-                                    !_wrongRules.Contains(x));
-
-                //если найдено, то
+                // Поиск несработавшего правила с целевой переменной в заключении
+                var r = _kBase.Rules.Except(_executedRules)
+                    .Except(_wrongRules)
+                    .First(rule => rule.Conclusion.Exists(c => c.Variable.Name == currentGoal.Name));
                 if (r != null)
                 {
-                    //проверить, есть ли все известные факты
-                    var f = true;
-                    var good = true;
+                    var foundNewGoal = false;
+                    var isWrong = false;
+                    // Для каждого утверждения в послыке
                     foreach (var condition in r.Condition)
                     {
-                        var known = KnownFacts.Find(x => x.Variable.Name == condition.Variable.Name);
-                        if (known == null || known.Value != condition.Value) good = false;
+                        // Если переменная означена, то сверяем значение с утверждением
+                        var known = Statements.Find(x => x.Variable.Name == condition.Variable.Name);
+                        if (known == null || known.Value != condition.Value) isWrong = true;
                         if (known != null) continue;
                         _goals.Push(condition.Variable);
-                        f = false;
+                        foundNewGoal = true;
                     }
 
-                    if (!f) continue;
-                    if (good)
-                    {
-                        _firedRules.Add(r);
-                        Statement goalStatement = null;
-                        foreach (var c in r.Conclusion)
-                        {
-                            KnownFacts.Add(c);
-                            if (c.Variable.Name == currentGoal.Name)
-                                goalStatement = c;
-                        }
-                        AddNewExplainNode(r, goalStatement);
-                        _goals.Pop();
-                    }
-                    else
+                    if (foundNewGoal) continue;
+
+                    if (isWrong)
                     {
                         _wrongRules.Add(r);
+                        continue;
                     }
-                    //иначе добавить все предпосылки в стек
+                    
+                    // Помечаем правило как сработавшее
+                    _executedRules.Add(r);
+                    
+                    // Запоминаем значения всех переменных из посылки
+                    foreach (var c in r.Conclusion) { Statements.Add(new Statement {Variable = c.Variable, Value = c.Value}); }
+
+                    ;
+                    // Добавляем запись о результате в дог
+                    AddNewExplainNode(r, r.Conclusion.Find(c => c.Variable.Name == currentGoal.Name));
+                    // Извлекаем переменную из целей
+                    _goals.Pop();
                 }
-                //иначе 
                 else
                 {
-                    //если это выводимо-запрашиваемая, но не ГЛАВНАЯ ЦЕЛЬ, то запросить
-                    if (currentGoal.Type == VariableType.queryConclusion)
+                    // Если это выводимо-запрашиваемая, но не ГЛАВНАЯ ЦЕЛЬ, то запросить
+                    if (currentGoal.Type == VariableType.queryDeduced)
                     {
-                        var statement = new Statement();
-                        statement.Variable = currentGoal;
+                        var statement = new Statement {Variable = currentGoal};
                         var f = new FormAsk(statement);
                         if (DialogResult.OK == f.ShowDialog())
                         {
                             _goals.Pop();
-                            KnownFacts.Add(statement);
-                            userAskLogs.Add(new UserAskLog(statement.Variable.Question, statement.Value));
+                            Statements.Add(statement);
+                            log.Add(new Log(statement.Variable.Question, statement.Value));
                             AddNewExplainNodeAsked(statement);
                         }
                         else
@@ -129,17 +122,18 @@ namespace ES.Models
                     }
                     else
                     {
-                        //иначе не удалось вывести значение
                         return null;
                     }
                 }
             }
-            var res = KnownFacts.Find(x => x.Variable.Name == PrimaryGoal.Name);
-            if (res == null) return null;
+
+            var res = Statements.Find(x => x.Variable.Name == PrimaryGoal.Name);
+            if (res != null)
             {
                 ExplainTree = _explainNodes.Find(x => x.Goal.Variable.Name == PrimaryGoal.Name);
-                return res;
+
             }
+            return res;
         }
 
         private void AddNewExplainNode(Rule firedRule, Statement knownStatementGoal)

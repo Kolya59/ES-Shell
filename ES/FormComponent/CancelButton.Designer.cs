@@ -25,12 +25,13 @@ namespace ES.FormComponent
         #region Код, автоматически созданный конструктором компонентов
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            components = new Container();
+            this.SuspendLayout();
+            this.ResumeLayout(false);
         }
 
         #endregion

@@ -92,7 +92,7 @@
     <Compile Include="Models\KnowledgeBase.cs" />
     <Compile Include="Models\InferenceEngine.cs" />
     <Compile Include="Models\Rule.cs" />
-    <Compile Include="Models\UserAskLog.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Variable.cs" />
     <Compile Include="ESForm\ChooseGoalForm.cs">
       <SubType>Form</SubType>
@@ -166,12 +166,6 @@
     <Compile Include="FormComponent\OKButton.Designer.cs">
       <DependentUpon>OKButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComponent\ReadOnlyTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FormComponent\ReadOnlyTextBox.Designer.cs">
-      <DependentUpon>ReadOnlyTextBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +201,9 @@
     <EmbeddedResource Include="FormComponent\AddPlusButton.resx">
       <DependentUpon>AddPlusButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormComponent\CancelButton.resx">
+      <DependentUpon>CancelButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormComponent\OKButton.resx">
       <DependentUpon>OKButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,7 +219,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -236,6 +232,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FormComponent\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\add-24px.png" />
+    <Content Include="Assets\create-24px.png" />
+    <Content Include="Assets\remove-24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

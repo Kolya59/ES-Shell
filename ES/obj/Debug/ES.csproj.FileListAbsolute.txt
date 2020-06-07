@@ -38,3 +38,4 @@ C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\bin\Debug\System.V
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.exe.config
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.FormComponent.OkButton.resources
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.csproj.CopyComplete
+C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.FormComponent.CancelButton.resources

@@ -7,12 +7,12 @@ namespace ES.ESForm
 {
     public partial class FormResultConsult : Form
     {
-        InferenceEngine _inferenceEngine;
+        private readonly InferenceEngine _inferenceEngine;
         public FormResultConsult(InferenceEngine inferenceEngine, string result)
         {
             InitializeComponent();
             _inferenceEngine = inferenceEngine;
-            readOnlyTextBoxResult.Text = "Результат:" + Environment.NewLine + result;
+            readOnlyTextBoxResult.Text = $"Результат:{Environment.NewLine}{result}";
             SetStyle();
         }
 
@@ -23,7 +23,7 @@ namespace ES.ESForm
 
         private void buttonExplain_Click(object sender, EventArgs e)
         {
-            var f = new FormExplain(_inferenceEngine.ExplainTree, _inferenceEngine.userAskLogs, _inferenceEngine.KnownFacts);
+            var f = new FormExplain(_inferenceEngine.ExplainTree, _inferenceEngine.log, _inferenceEngine.Statements);
             f.ShowDialog();
         }
 

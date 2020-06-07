@@ -64,13 +64,13 @@ namespace ES.ESForm
             FillList();
             switch (_var.Type)
             {
-                case VariableType.query:
+                case VariableType.queried:
                     radioButtonZaprshivaemaya.Checked = true;
                     break;
-                case VariableType.queryConclusion:
+                case VariableType.queryDeduced:
                     radioButtonVivodZapr.Checked = true;
                     break;
-                case VariableType.conclusion:
+                case VariableType.deduced:
                     radioButtonVivodymaya.Checked = true;
                     break;
             }
@@ -138,11 +138,11 @@ namespace ES.ESForm
                 _var.Question = textBoxQuestion.Text;
             }
             if (radioButtonVivodymaya.Checked)
-                _var.Type = VariableType.conclusion;
+                _var.Type = VariableType.deduced;
             if (radioButtonVivodZapr.Checked)
-                _var.Type = VariableType.queryConclusion;
+                _var.Type = VariableType.queryDeduced;
             if (radioButtonZaprshivaemaya.Checked)
-                _var.Type = VariableType.query;
+                _var.Type = VariableType.queried;
             _var.Domain = _kBase.Domains[comboBoxDomain.SelectedIndex];
             if (_mode == Modes.add)
             {

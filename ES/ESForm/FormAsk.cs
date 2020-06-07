@@ -42,12 +42,10 @@ namespace ES.ESForm
         {
             foreach(RadioButton rb in groupBoxAnswers.Controls)
             {
-                if (rb.Checked)
-                {
-                    _statement.Value = rb.Text;
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (!rb.Checked) continue;
+                _statement.Value = rb.Text;
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
     }

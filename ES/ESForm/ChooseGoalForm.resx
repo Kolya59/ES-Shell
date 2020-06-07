@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="MainForm_MainForm_FormClosing_Knowledge_base_was_changed__Save_it_" xml:space="preserve">
+    <value>Knowledge base was changed. Save it?</value>
+  </data>
 </root>

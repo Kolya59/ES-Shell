@@ -26,8 +26,8 @@ namespace ES.FormComponent
         #region Код, автоматически созданный конструктором компонентов
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -35,10 +35,9 @@ namespace ES.FormComponent
             // 
             // AddPlusButton
             // 
-            this.ImageAlign = ContentAlignment.TopCenter;
-            this.TextAlign = ContentAlignment.TopCenter;
+            this.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.ResumeLayout(false);
-
         }
 
         #endregion

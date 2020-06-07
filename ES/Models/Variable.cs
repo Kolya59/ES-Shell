@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ES.Models
 {
-    public enum VariableType { query, queryConclusion, conclusion}
+    public enum VariableType { queried, queryDeduced, deduced}
     [Serializable]
     public class Variable
     {
@@ -30,5 +31,20 @@ namespace ES.Models
         {
             return new Variable(Name, Domain, Question, Type);
         }
+
+        private sealed class VariableEqualityComparer : IEqualityComparer<Variable>
+        {
+            public bool Equals(Variable x, Variable y)
+            {
+                return x.Name == y.Name;
+            }
+
+            public int GetHashCode(Variable obj)
+            {
+                return obj.Name.GetHashCode();
+            }
+        }
+
+        public static IEqualityComparer<Variable> VariableComparer { get; } = new VariableEqualityComparer();
     }
 }

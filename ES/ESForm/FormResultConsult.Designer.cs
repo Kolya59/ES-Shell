@@ -33,7 +33,7 @@ namespace ES.ESForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.readOnlyTextBoxResult = new ES.FormComponent.ReadOnlyTextBox(this.components);
+            this.readOnlyTextBoxResult = new System.Windows.Forms.TextBox();
             this.buttonExplain = new System.Windows.Forms.Button();
             this.okButton1 = new ES.FormComponent.OkButton(this.components);
             this.SuspendLayout();
@@ -43,20 +43,22 @@ namespace ES.ESForm
             this.readOnlyTextBoxResult.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.readOnlyTextBoxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.readOnlyTextBoxResult.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.readOnlyTextBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.readOnlyTextBoxResult.Location = new System.Drawing.Point(12, 23);
+            this.readOnlyTextBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.readOnlyTextBoxResult.Location = new System.Drawing.Point(9, 19);
+            this.readOnlyTextBoxResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.readOnlyTextBoxResult.Multiline = true;
             this.readOnlyTextBoxResult.Name = "readOnlyTextBoxResult";
-            this.readOnlyTextBoxResult.Size = new System.Drawing.Size(353, 66);
+            this.readOnlyTextBoxResult.Size = new System.Drawing.Size(265, 54);
             this.readOnlyTextBoxResult.TabIndex = 0;
             this.readOnlyTextBoxResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonExplain
             // 
-            this.buttonExplain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonExplain.Location = new System.Drawing.Point(12, 103);
+            this.buttonExplain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.buttonExplain.Location = new System.Drawing.Point(9, 84);
+            this.buttonExplain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonExplain.Name = "buttonExplain";
-            this.buttonExplain.Size = new System.Drawing.Size(249, 39);
+            this.buttonExplain.Size = new System.Drawing.Size(187, 32);
             this.buttonExplain.TabIndex = 1;
             this.buttonExplain.Text = "Показать объяснение";
             this.buttonExplain.UseVisualStyleBackColor = true;
@@ -64,13 +66,14 @@ namespace ES.ESForm
             // 
             // okButton1
             // 
-            this.okButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(250)))), ((int)(((byte)(235)))));
-            this.okButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(225)))), ((int)(((byte)(132)))));
+            this.okButton1.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (250)))), ((int) (((byte) (235)))));
+            this.okButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int) (((byte) (132)))), ((int) (((byte) (225)))), ((int) (((byte) (132)))));
             this.okButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.okButton1.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.okButton1.Location = new System.Drawing.Point(274, 103);
+            this.okButton1.Location = new System.Drawing.Point(206, 84);
+            this.okButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.okButton1.Name = "okButton1";
-            this.okButton1.Size = new System.Drawing.Size(91, 39);
+            this.okButton1.Size = new System.Drawing.Size(68, 32);
             this.okButton1.TabIndex = 2;
             this.okButton1.Text = "OK";
             this.okButton1.UseVisualStyleBackColor = false;
@@ -78,25 +81,25 @@ namespace ES.ESForm
             // 
             // FormResultConsult
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(381, 154);
+            this.ClientSize = new System.Drawing.Size(286, 125);
             this.Controls.Add(this.okButton1);
             this.Controls.Add(this.buttonExplain);
             this.Controls.Add(this.readOnlyTextBoxResult);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormResultConsult";
             this.Text = "Результат";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
-        #endregion
+        private System.Windows.Forms.Button buttonExplain;
+        private ES.FormComponent.OkButton okButton1;
+        private System.Windows.Forms.TextBox readOnlyTextBoxResult;
 
-        private ReadOnlyTextBox readOnlyTextBoxResult;
-        private Button buttonExplain;
-        private OkButton okButton1;
+        #endregion
     }
 }

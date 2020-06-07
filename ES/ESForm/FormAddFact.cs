@@ -73,8 +73,8 @@ namespace ES.ESForm
                     comboBoxVar.Items.Add(var.Name);
                 } else
                 {
-                    if (var.Type == VariableType.conclusion ||
-                        var.Type == VariableType.queryConclusion)
+                    if (var.Type == VariableType.deduced ||
+                        var.Type == VariableType.queryDeduced)
                         comboBoxVar.Items.Add(var.Name);
                 }
             }
