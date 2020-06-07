@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ES.Models;
 
-namespace ES.ESForm
+namespace ES.Forms
 {
     public partial class ChooseGoalForm : Form
     {
-        List<Variable> _goals;
+        private readonly List<Variable> _goals;
 
         public ChooseGoalForm(List<Variable> goals)
         {
             InitializeComponent();
             foreach (var g in goals)
-                comboBoxGoals.Items.Add(g.Name);
-            comboBoxGoals.SelectedIndex = 0;
+                cbGoals.Items.Add(g.Name);
+            cbGoals.SelectedIndex = 0;
             _goals = goals;
             CenterToScreen();
         }
 
-        private void okButton1_Click(object sender, EventArgs e)
+        private void btOk_Click(object sender, EventArgs e)
         {
-            if (comboBoxGoals.SelectedIndex >= 0)
+            if (cbGoals.SelectedIndex >= 0)
             {
-                Program.mainForm.inferenceEngine.SetPrimaryGoal(_goals[comboBoxGoals.SelectedIndex]);
+                Program.mainForm.inferenceEngine.SetPrimaryGoal(_goals[cbGoals.SelectedIndex]);
                 DialogResult = DialogResult.OK;
                 Close();
             } else
             {
-                MessageBox.Show("Выберите цель консультации");
+                MessageBox.Show("Choose consultation goal");
             }
         }
     }

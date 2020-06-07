@@ -3,29 +3,31 @@ using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
-namespace ES.ESForm
+namespace ES.Forms
 {
     public partial class FormAddDomain : Form
     {
         public enum Modes { add, edit}
-        KnowledgeBase _kBase;
-        Modes _mode;
-        int _domainIndex = -1;
-        Domain _domain;
-        int _insertAfterIdx;
-        //добавление
+
+        private readonly KnowledgeBase _kBase;
+        private readonly Modes _mode;
+        private readonly int _domainIndex = -1;
+        private readonly Domain _domain;
+        private readonly int _insertAfterIdx;
+        
+        // Add domain
         public FormAddDomain(int insertAfterIdx, Modes mode, KnowledgeBase kBase)
         {
             InitializeComponent();       
             _mode = mode;
             _kBase = kBase;
             _domain = new Domain();
-            esTextBoxDomainName.Text = $"Domain{kBase.Domains.Count}";
+            tbDomainName.Text = $@"Domain {kBase.Domains.Count}";
             SetStyle();
             _insertAfterIdx = insertAfterIdx;
         }
 
-        //изменение
+        // Edit domain
         public FormAddDomain(Modes mode, KnowledgeBase kBase, int domainIndex)
         {
             InitializeComponent();
@@ -37,9 +39,9 @@ namespace ES.ESForm
             FillForm();
         }
 
-        void SetStyle()
+        private void SetStyle()
         {
-            Text = "Домен";
+            Text = "Domain";
             BackColor = SystemColors.ControlLightLight;
             buttonDeleteDomainValue.Enabled = false;
             buttonEditDomainValue.Enabled = false;
@@ -60,12 +62,12 @@ namespace ES.ESForm
             CenterToScreen();
         }
 
-        void FillForm()
+        private void FillForm()
         {
             FillList();
             if (_domain.Name != "")
             {
-                esTextBoxDomainName.Text = _domain.Name;
+                tbDomainName.Text = _domain.Name;
             }
         }
 
@@ -77,12 +79,12 @@ namespace ES.ESForm
         }
         private void buttonAddDomainValue_Click(object sender, EventArgs e)
         {
-            if (esTextBoxDomainValue.Text == "")
+            if (tbDomainValue.Text == "")
             {
                 EmptyDomainValue();
                 return;
             }
-            if (!_domain.AddValue(esTextBoxDomainValue.Text.Trim()))
+            if (!_domain.AddValue(tbDomainValue.Text.Trim()))
             {
                 DomainValueAlreadyExists();
                 return;
@@ -99,7 +101,7 @@ namespace ES.ESForm
         private void buttonEditDomainValue_Click(object sender, EventArgs e)
         {
             var index = listBoxDomainValues.SelectedIndex;
-            if (esTextBoxDomainValue.Text == "")
+            if (tbDomainValue.Text == "")
             {
                 EmptyDomainValue();
                 return;
@@ -110,7 +112,7 @@ namespace ES.ESForm
                 return;
             }
 
-            if (!_domain.EditValue(index, esTextBoxDomainValue.Text))
+            if (!_domain.EditValue(index, tbDomainValue.Text))
             {
                 DomainValueAlreadyExists();
                 return;
@@ -135,19 +137,63 @@ namespace ES.ESForm
             listBoxDomainValues.SelectedIndex = _domain.Values.Count - 1;
         }
 
-        private void cancelButton1_Click(object sender, EventArgs e)
+        private static void UnknownError()
         {
-            Close();
+            MessageBox.Show("Unknown error");
         }
 
-        private void okButton1_Click(object sender, EventArgs e)
+        private static void EmptyDomainValue()
         {
-            if (esTextBoxDomainName.Text == "")
+            MessageBox.Show("Empty domain value");
+        }
+
+        private static void DomainValueAlreadyExists()
+        {
+            MessageBox.Show("Value already exists");
+        }
+
+        private static void EmptyDomainName()
+        {
+            MessageBox.Show("Empty domain name");
+        }
+
+        private static void DomainValueUsed()
+        {
+            MessageBox.Show("Value already used");
+        }
+
+        private void listBoxDomainValues_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonEditDomainValue.Enabled = listBoxDomainValues.SelectedIndex >= 0;
+            buttonDeleteDomainValue.Enabled = listBoxDomainValues.SelectedIndex >= 0;
+            tbDomainValue.Text = _domain.Values[listBoxDomainValues.SelectedIndex].Value;
+        }
+
+        private void esTextBoxDomainValue_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter) return;
+            var s = tbDomainName.Text;
+            if(tbDomainValue.Text == "")
+            {
+                EmptyDomainValue();
+                e.Handled = true;
+                return;
+            }
+            buttonAddDomainValue_Click(sender, e);
+            tbDomainValue.Text = "";
+            tbDomainName.Text = s;
+            e.Handled = true;
+
+        }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            if (tbDomainName.Text == "")
             {
                 EmptyDomainName();
                 return;
             }
-            _domain.Name = esTextBoxDomainName.Text;
+            _domain.Name = tbDomainName.Text;
             if(_mode == Modes.add)
             {
                 if (!_kBase.AddDomain(_insertAfterIdx, _domain))
@@ -162,55 +208,9 @@ namespace ES.ESForm
             Close();
         }
 
-        private void UnknownError()
+        private void btCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Возникла ошибка");
-        }
-
-        private void EmptyDomainValue()
-        {
-            MessageBox.Show("Значение домена не может быть пустым");
-        }
-
-        private void DomainValueAlreadyExists()
-        {
-            MessageBox.Show("Такое значение домена уже существует");
-        }
-
-        private void EmptyDomainName()
-        {
-            MessageBox.Show("Имя домена не может быть пустым");
-        }
-
-        private void DomainValueUsed()
-        {
-            MessageBox.Show("Это значение домена уже используется");
-        }
-
-        private void listBoxDomainValues_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            buttonEditDomainValue.Enabled = listBoxDomainValues.SelectedIndex >= 0;
-            buttonDeleteDomainValue.Enabled = listBoxDomainValues.SelectedIndex >= 0;
-            esTextBoxDomainValue.Text = _domain.Values[listBoxDomainValues.SelectedIndex].Value;
-        }
-
-        private void esTextBoxDomainValue_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var s = esTextBoxDomainName.Text;
-                if(esTextBoxDomainValue.Text == "")
-                {
-                    EmptyDomainValue();
-                    e.Handled = true;
-                    return;
-                }
-                buttonAddDomainValue_Click(sender, e);
-                esTextBoxDomainValue.Text = "";
-                esTextBoxDomainName.Text = s;
-                e.Handled = true;
-            }
-          
+            Close();
         }
     }
 }

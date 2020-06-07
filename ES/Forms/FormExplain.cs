@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
-namespace ES.ESForm
+namespace ES.Forms
 {
     public partial class FormExplain : Form
     {
@@ -42,7 +42,7 @@ namespace ES.ESForm
             treeViewExplain.EndUpdate();
         }
 
-        static void AddNodesToTreeView(TreeNode tree, ExplainNode node)
+        private static void AddNodesToTreeView(TreeNode tree, ExplainNode node)
         {
             if (node.Asked)
             {
@@ -71,12 +71,12 @@ namespace ES.ESForm
         {
             BackColor = SystemColors.ControlLightLight;
             var buttonBorder = Color.Silver;
-            buttonExpandTree.FlatStyle = FlatStyle.Flat;
-            buttonExpandTree.FlatAppearance.BorderColor = buttonBorder;
-            buttonExpandTree.BackColor = SystemColors.ControlLightLight;
+            btExpandTree.FlatStyle = FlatStyle.Flat;
+            btExpandTree.FlatAppearance.BorderColor = buttonBorder;
+            btExpandTree.BackColor = SystemColors.ControlLightLight;
         }
 
-        private void buttonExpandTree_Click(object sender, EventArgs e)
+        private void btExpandTree_Click(object sender, EventArgs e)
         {
             ExpandTreeView(treeViewExplain.Nodes[0]);
         }

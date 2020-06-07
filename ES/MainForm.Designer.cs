@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using ES.FormComponent;
 
 namespace ES
 {
@@ -111,7 +110,7 @@ namespace ES
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.menuFile, this.menuConsultation, this.menuReasoning});
@@ -216,6 +215,7 @@ namespace ES
             // 
             // splitContainerRules.Panel2
             // 
+            this.splitContainerRules.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainerRules.Panel2.Controls.Add(this.gbConclusion);
             this.splitContainerRules.Panel2.Controls.Add(this.gbActions);
             this.splitContainerRules.Panel2.Controls.Add(this.gbCondition);
@@ -224,9 +224,10 @@ namespace ES
             this.splitContainerRules.SplitterWidth = 3;
             this.splitContainerRules.TabIndex = 0;
             // 
-            // listViewRules
+            // lvRules
             // 
             this.lvRules.AllowDrop = true;
+            this.lvRules.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lvRules.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.cName, this.cDescription});
             this.lvRules.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvRules.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
@@ -266,13 +267,13 @@ namespace ES
             this.gbConclusion.Size = new System.Drawing.Size(181, 203);
             this.gbConclusion.TabIndex = 4;
             this.gbConclusion.TabStop = false;
-            this.gbConclusion.Text = "Conclusion";
+            this.gbConclusion.Text = "Conclusions";
             // 
-            // textBoxConclusion
+            // tbConclusion
             // 
             this.tbConclusion.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbConclusion.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbConclusion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbConclusion.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tbConclusion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbConclusion.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tbConclusion.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.tbConclusion.Location = new System.Drawing.Point(4, 15);
@@ -289,7 +290,7 @@ namespace ES
             this.gbActions.Controls.Add(this.btEditRule);
             this.gbActions.Controls.Add(this.buttonAddRule);
             this.gbActions.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gbActions.Location = new System.Drawing.Point(18, 226);
+            this.gbActions.Location = new System.Drawing.Point(18, 12);
             this.gbActions.Margin = new System.Windows.Forms.Padding(2);
             this.gbActions.Name = "gbActions";
             this.gbActions.Padding = new System.Windows.Forms.Padding(2);
@@ -298,43 +299,46 @@ namespace ES
             this.gbActions.TabStop = false;
             this.gbActions.Text = "Actions";
             // 
-            // buttonDeleteRule
+            // btDeleteRule
             // 
-            this.btDeleteRule.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btDeleteRule.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (128)))), ((int) (((byte) (128)))));
             this.btDeleteRule.Enabled = false;
+            this.btDeleteRule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDeleteRule.ForeColor = System.Drawing.Color.Black;
-            this.btDeleteRule.Image = ((System.Drawing.Image) (resources.GetObject("buttonDeleteRule.Image")));
-            this.btDeleteRule.Location = new System.Drawing.Point(151, 18);
+            this.btDeleteRule.Image = ((System.Drawing.Image) (resources.GetObject("btDeleteRule.Image")));
+            this.btDeleteRule.Location = new System.Drawing.Point(128, 18);
             this.btDeleteRule.Margin = new System.Windows.Forms.Padding(2);
             this.btDeleteRule.Name = "btDeleteRule";
-            this.btDeleteRule.Size = new System.Drawing.Size(26, 26);
+            this.btDeleteRule.Size = new System.Drawing.Size(53, 26);
             this.btDeleteRule.TabIndex = 3;
             this.btDeleteRule.UseVisualStyleBackColor = false;
             this.btDeleteRule.Click += new System.EventHandler(this.buttonDeleteRule_Click);
             // 
-            // buttonEditRule
+            // btEditRule
             // 
-            this.btEditRule.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btEditRule.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (255)))), ((int) (((byte) (128)))));
             this.btEditRule.Enabled = false;
+            this.btEditRule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btEditRule.ForeColor = System.Drawing.Color.Black;
-            this.btEditRule.Image = ((System.Drawing.Image) (resources.GetObject("buttonEditRule.Image")));
-            this.btEditRule.Location = new System.Drawing.Point(82, 18);
+            this.btEditRule.Image = ((System.Drawing.Image) (resources.GetObject("btEditRule.Image")));
+            this.btEditRule.Location = new System.Drawing.Point(62, 18);
             this.btEditRule.Margin = new System.Windows.Forms.Padding(2);
             this.btEditRule.Name = "btEditRule";
-            this.btEditRule.Size = new System.Drawing.Size(26, 27);
+            this.btEditRule.Size = new System.Drawing.Size(62, 27);
             this.btEditRule.TabIndex = 2;
             this.btEditRule.UseVisualStyleBackColor = false;
             this.btEditRule.Click += new System.EventHandler(this.buttonEditRule_Click);
             // 
             // buttonAddRule
             // 
-            this.buttonAddRule.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAddRule.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (0)))));
+            this.buttonAddRule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddRule.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonAddRule.Image = ((System.Drawing.Image) (resources.GetObject("buttonAddRule.Image")));
             this.buttonAddRule.Location = new System.Drawing.Point(4, 18);
             this.buttonAddRule.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddRule.Name = "buttonAddRule";
-            this.buttonAddRule.Size = new System.Drawing.Size(26, 27);
+            this.buttonAddRule.Size = new System.Drawing.Size(54, 27);
             this.buttonAddRule.TabIndex = 1;
             this.buttonAddRule.UseVisualStyleBackColor = false;
             this.buttonAddRule.Click += new System.EventHandler(this.buttonAddRule_Click);
@@ -343,20 +347,20 @@ namespace ES
             // 
             this.gbCondition.Controls.Add(this.tbCondition);
             this.gbCondition.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gbCondition.Location = new System.Drawing.Point(14, 11);
+            this.gbCondition.Location = new System.Drawing.Point(18, 72);
             this.gbCondition.Margin = new System.Windows.Forms.Padding(2);
             this.gbCondition.Name = "gbCondition";
             this.gbCondition.Padding = new System.Windows.Forms.Padding(2);
             this.gbCondition.Size = new System.Drawing.Size(185, 211);
             this.gbCondition.TabIndex = 3;
             this.gbCondition.TabStop = false;
-            this.gbCondition.Text = "Condition";
+            this.gbCondition.Text = "Conditions";
             // 
-            // textBoxCondition
+            // tbCondition
             // 
             this.tbCondition.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbCondition.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbCondition.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbCondition.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tbCondition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbCondition.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tbCondition.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.tbCondition.Location = new System.Drawing.Point(4, 20);
@@ -392,6 +396,7 @@ namespace ES
             // 
             // splitContainerVars.Panel2
             // 
+            this.splitContainerVars.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainerVars.Panel2.Controls.Add(this.gbDomainValues);
             this.splitContainerVars.Panel2.Controls.Add(this.gbQuestion);
             this.splitContainerVars.Panel2.Controls.Add(this.groupBox2);
@@ -400,8 +405,9 @@ namespace ES
             this.splitContainerVars.SplitterWidth = 3;
             this.splitContainerVars.TabIndex = 0;
             // 
-            // listViewVars
+            // lvVars
             // 
+            this.lvVars.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lvVars.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.chName, this.chKind, this.chDomain});
             this.lvVars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvVars.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
@@ -445,16 +451,17 @@ namespace ES
             this.gbDomainValues.TabStop = false;
             this.gbDomainValues.Text = "Domain Values";
             // 
-            // listBoxDomainValuesForVar
+            // lbDomainValuesForVar
             // 
-            this.lbDomainValuesForVar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbDomainValuesForVar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lbDomainValuesForVar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbDomainValuesForVar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.lbDomainValuesForVar.FormattingEnabled = true;
             this.lbDomainValuesForVar.ItemHeight = 17;
             this.lbDomainValuesForVar.Location = new System.Drawing.Point(4, 20);
             this.lbDomainValuesForVar.Margin = new System.Windows.Forms.Padding(2);
             this.lbDomainValuesForVar.Name = "lbDomainValuesForVar";
-            this.lbDomainValuesForVar.Size = new System.Drawing.Size(158, 136);
+            this.lbDomainValuesForVar.Size = new System.Drawing.Size(158, 189);
             this.lbDomainValuesForVar.TabIndex = 0;
             // 
             // gbQuestion
@@ -470,10 +477,10 @@ namespace ES
             this.gbQuestion.TabStop = false;
             this.gbQuestion.Text = "Question Text";
             // 
-            // textBoxQuestion
+            // tbQuestion
             // 
-            this.tbQuestion.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbQuestion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbQuestion.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tbQuestion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbQuestion.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tbQuestion.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.tbQuestion.Location = new System.Drawing.Point(4, 20);
@@ -481,7 +488,7 @@ namespace ES
             this.tbQuestion.Multiline = true;
             this.tbQuestion.Name = "tbQuestion";
             this.tbQuestion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbQuestion.Size = new System.Drawing.Size(158, 92);
+            this.tbQuestion.Size = new System.Drawing.Size(158, 167);
             this.tbQuestion.TabIndex = 0;
             // 
             // groupBox2
@@ -500,42 +507,45 @@ namespace ES
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Actions";
             // 
-            // buttonDeleteVar
+            // btDeleteVar
             // 
-            this.btDeleteVar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btDeleteVar.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (128)))), ((int) (((byte) (128)))));
             this.btDeleteVar.Enabled = false;
-            this.btDeleteVar.Image = ((System.Drawing.Image) (resources.GetObject("buttonDeleteVar.Image")));
-            this.btDeleteVar.Location = new System.Drawing.Point(124, 19);
+            this.btDeleteVar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDeleteVar.Image = ((System.Drawing.Image) (resources.GetObject("btDeleteVar.Image")));
+            this.btDeleteVar.Location = new System.Drawing.Point(113, 19);
             this.btDeleteVar.Margin = new System.Windows.Forms.Padding(2);
             this.btDeleteVar.Name = "btDeleteVar";
-            this.btDeleteVar.Size = new System.Drawing.Size(27, 26);
+            this.btDeleteVar.Size = new System.Drawing.Size(49, 27);
             this.btDeleteVar.TabIndex = 3;
             this.btDeleteVar.UseVisualStyleBackColor = false;
             this.btDeleteVar.Click += new System.EventHandler(this.buttonDeleteVar_Click);
             // 
-            // buttonEditVar
+            // btEditVar
             // 
-            this.btEditVar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btEditVar.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (255)))), ((int) (((byte) (128)))));
             this.btEditVar.Enabled = false;
-            this.btEditVar.Image = ((System.Drawing.Image) (resources.GetObject("buttonEditVar.Image")));
-            this.btEditVar.Location = new System.Drawing.Point(71, 18);
+            this.btEditVar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEditVar.Image = ((System.Drawing.Image) (resources.GetObject("btEditVar.Image")));
+            this.btEditVar.Location = new System.Drawing.Point(57, 18);
             this.btEditVar.Margin = new System.Windows.Forms.Padding(2);
             this.btEditVar.Name = "btEditVar";
-            this.btEditVar.Size = new System.Drawing.Size(27, 27);
+            this.btEditVar.Size = new System.Drawing.Size(52, 27);
             this.btEditVar.TabIndex = 2;
             this.btEditVar.UseVisualStyleBackColor = false;
             this.btEditVar.Click += new System.EventHandler(this.buttonEditVar_Click);
             // 
             // buttonAddVar
             // 
-            this.buttonAddVar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAddVar.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (0)))));
+            this.buttonAddVar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddVar.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.buttonAddVar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonAddVar.Image = ((System.Drawing.Image) (resources.GetObject("buttonAddVar.Image")));
-            this.buttonAddVar.Location = new System.Drawing.Point(18, 18);
+            this.buttonAddVar.Location = new System.Drawing.Point(4, 18);
             this.buttonAddVar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddVar.Name = "buttonAddVar";
-            this.buttonAddVar.Size = new System.Drawing.Size(27, 27);
+            this.buttonAddVar.Size = new System.Drawing.Size(49, 27);
             this.buttonAddVar.TabIndex = 1;
             this.buttonAddVar.UseVisualStyleBackColor = false;
             this.buttonAddVar.Click += new System.EventHandler(this.buttonAddVar_Click);
@@ -564,6 +574,7 @@ namespace ES
             // 
             // splitContainerDomains.Panel2
             // 
+            this.splitContainerDomains.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainerDomains.Panel2.Controls.Add(this.groupBox4);
             this.splitContainerDomains.Panel2.Controls.Add(this.groupBox3);
             this.splitContainerDomains.Size = new System.Drawing.Size(776, 507);
@@ -573,6 +584,7 @@ namespace ES
             // 
             // listViewDomains
             // 
+            this.listViewDomains.BackColor = System.Drawing.SystemColors.ControlLight;
             this.listViewDomains.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.chDomainName});
             this.listViewDomains.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewDomains.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
@@ -608,14 +620,15 @@ namespace ES
             // 
             // listBoxDomainValues
             // 
-            this.listBoxDomainValues.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxDomainValues.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.listBoxDomainValues.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listBoxDomainValues.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.listBoxDomainValues.FormattingEnabled = true;
             this.listBoxDomainValues.ItemHeight = 17;
             this.listBoxDomainValues.Location = new System.Drawing.Point(4, 20);
             this.listBoxDomainValues.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxDomainValues.Name = "listBoxDomainValues";
-            this.listBoxDomainValues.Size = new System.Drawing.Size(158, 238);
+            this.listBoxDomainValues.Size = new System.Drawing.Size(158, 359);
             this.listBoxDomainValues.TabIndex = 0;
             // 
             // groupBox3
@@ -635,42 +648,45 @@ namespace ES
             // 
             // buttonDeleteDomain
             // 
-            this.buttonDeleteDomain.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonDeleteDomain.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (128)))), ((int) (((byte) (128)))));
             this.buttonDeleteDomain.Enabled = false;
+            this.buttonDeleteDomain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteDomain.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonDeleteDomain.Image = ((System.Drawing.Image) (resources.GetObject("buttonDeleteDomain.Image")));
             this.buttonDeleteDomain.Location = new System.Drawing.Point(123, 18);
             this.buttonDeleteDomain.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDeleteDomain.Name = "buttonDeleteDomain";
-            this.buttonDeleteDomain.Size = new System.Drawing.Size(27, 26);
+            this.buttonDeleteDomain.Size = new System.Drawing.Size(43, 26);
             this.buttonDeleteDomain.TabIndex = 3;
             this.buttonDeleteDomain.UseVisualStyleBackColor = false;
             this.buttonDeleteDomain.Click += new System.EventHandler(this.buttonDeleteDomain_Click);
             // 
             // buttonEditDomain
             // 
-            this.buttonEditDomain.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonEditDomain.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (255)))), ((int) (((byte) (128)))));
             this.buttonEditDomain.Enabled = false;
+            this.buttonEditDomain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditDomain.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonEditDomain.Image = ((System.Drawing.Image) (resources.GetObject("buttonEditDomain.Image")));
-            this.buttonEditDomain.Location = new System.Drawing.Point(71, 17);
+            this.buttonEditDomain.Location = new System.Drawing.Point(56, 17);
             this.buttonEditDomain.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditDomain.Name = "buttonEditDomain";
-            this.buttonEditDomain.Size = new System.Drawing.Size(27, 27);
+            this.buttonEditDomain.Size = new System.Drawing.Size(63, 27);
             this.buttonEditDomain.TabIndex = 2;
             this.buttonEditDomain.UseVisualStyleBackColor = false;
             this.buttonEditDomain.Click += new System.EventHandler(this.buttonEditDomain_Click);
             // 
             // buttonAddDomain
             // 
-            this.buttonAddDomain.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAddDomain.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (0)))));
             this.buttonAddDomain.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonAddDomain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddDomain.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonAddDomain.Image = ((System.Drawing.Image) (resources.GetObject("buttonAddDomain.Image")));
-            this.buttonAddDomain.Location = new System.Drawing.Point(17, 17);
+            this.buttonAddDomain.Location = new System.Drawing.Point(4, 17);
             this.buttonAddDomain.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddDomain.Name = "buttonAddDomain";
-            this.buttonAddDomain.Size = new System.Drawing.Size(27, 27);
+            this.buttonAddDomain.Size = new System.Drawing.Size(48, 27);
             this.buttonAddDomain.TabIndex = 1;
             this.buttonAddDomain.UseVisualStyleBackColor = false;
             this.buttonAddDomain.Click += new System.EventHandler(this.buttonAddDomain_Click);
@@ -679,6 +695,7 @@ namespace ES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
@@ -723,15 +740,15 @@ namespace ES
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Button btDeleteRule;
+        private System.Windows.Forms.Button btDeleteVar;
+        private System.Windows.Forms.Button btEditRule;
+        private System.Windows.Forms.Button btEditVar;
         private System.Windows.Forms.Button buttonAddDomain;
         private System.Windows.Forms.Button buttonAddRule;
         private System.Windows.Forms.Button buttonAddVar;
         private System.Windows.Forms.Button buttonDeleteDomain;
-        private System.Windows.Forms.Button btDeleteRule;
-        private System.Windows.Forms.Button btDeleteVar;
         private System.Windows.Forms.Button buttonEditDomain;
-        private System.Windows.Forms.Button btEditRule;
-        private System.Windows.Forms.Button btEditVar;
         private System.Windows.Forms.ColumnHeader cDescription;
         private System.Windows.Forms.ColumnHeader chDomain;
         private System.Windows.Forms.ColumnHeader chDomainName;
@@ -747,8 +764,8 @@ namespace ES
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListBox listBoxDomainValues;
         private System.Windows.Forms.ListBox lbDomainValuesForVar;
+        private System.Windows.Forms.ListBox listBoxDomainValues;
         private System.Windows.Forms.ListView listViewDomains;
         private System.Windows.Forms.ListView lvRules;
         private System.Windows.Forms.ListView lvVars;

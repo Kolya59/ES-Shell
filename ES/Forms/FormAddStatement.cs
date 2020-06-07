@@ -3,19 +3,21 @@ using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
-namespace ES.ESForm
+namespace ES.Forms
 {
-    public partial class FormAddFact : Form
+    public partial class FormAddStatement : Form
     {
         public enum Modes { add, edit }
-        Modes _mode;
-        FactType _factType;
-        KnowledgeBase _kBase;
-        Statement _statement;
-        Rule _rule;
-        int _factIndex;
-        //добавление факта
-        public FormAddFact(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule)
+
+        private readonly Modes _mode;
+        private readonly FactType _factType;
+        private readonly KnowledgeBase _kBase;
+        private readonly Statement _statement;
+        private readonly Rule _rule;
+
+        private readonly int _factIndex;
+        // Add Statement 
+        public FormAddStatement(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule)
         {
             InitializeComponent();
             _mode = mode;
@@ -27,8 +29,8 @@ namespace ES.ESForm
             _statement = new Statement();
         }
 
-        //изменение факта 
-        public FormAddFact(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule, int factIndex)
+        // Edit statement
+        public FormAddStatement(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule, int factIndex)
         {
             InitializeComponent();
             _mode = mode;
@@ -49,16 +51,13 @@ namespace ES.ESForm
       
         private void SetStyle()
         {
-            Text = "Факт";
-            switch (_factType)
+            Text = "Statement";
+            Text += _factType switch
             {
-                case FactType.premise:
-                    Text += " посылки";
-                    break;
-                case FactType.conclusion:
-                    Text += " заключения";
-                    break;
-            }
+                FactType.premise => " conditions",
+                FactType.conclusion => " conclusions",
+                _ => throw new ArgumentOutOfRangeException()
+            };
             BackColor = SystemColors.ControlLightLight;
             CenterToScreen();
         }
@@ -85,11 +84,9 @@ namespace ES.ESForm
         private void addPlusVarButton_Click(object sender, EventArgs e)
         {
             var f = new FormAddVar(FormAddVar.Modes.add, _kBase);
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                FillListVar();
-                comboBoxVar.SelectedIndex = 0;
-            }
+            if (f.ShowDialog() != DialogResult.OK) return;
+            FillListVar();
+            comboBoxVar.SelectedIndex = 0;
         }
 
         private void comboBoxVar_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,7 +98,17 @@ namespace ES.ESForm
             comboBoxDomain.SelectedIndex = 0;
         }
 
-        private void okButton1_Click(object sender, EventArgs e)
+        private void NotSelectedError()
+        {
+            MessageBox.Show("Выберите переменную и ее значение");
+        }
+
+        private void cancelButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btOk_Click(object sender, EventArgs e)
         {
             if (comboBoxVar.SelectedIndex < 0 || 
                 comboBoxDomain.SelectedIndex < 0)
@@ -117,7 +124,7 @@ namespace ES.ESForm
                 case FactType.premise:
                     if (_mode == Modes.add)
                     {
-                       if (!_rule.AddPremiseFact(_statement))
+                        if (!_rule.AddPremiseFact(_statement))
                             return;
                     }
                     else
@@ -138,17 +145,14 @@ namespace ES.ESForm
                             return;
                     }
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void NotSelectedError()
-        {
-            MessageBox.Show("Выберите переменную и ее значение");
-        }
-
-        private void cancelButton1_Click(object sender, EventArgs e)
+        private void btCancel_Click(object sender, EventArgs e)
         {
             Close();
         }

@@ -94,77 +94,53 @@
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Variable.cs" />
-    <Compile Include="ESForm\ChooseGoalForm.cs">
+    <Compile Include="Forms\FormChooseGoal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\ChooseGoalForm.Designer.cs">
-      <DependentUpon>ChooseGoalForm.cs</DependentUpon>
+    <Compile Include="Forms\FormChooseGoal.Designer.cs">
+      <DependentUpon>FormChooseGoal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormAddDomain.cs">
+    <Compile Include="Forms\FormAddDomain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormAddDomain.Designer.cs">
+    <Compile Include="Forms\FormAddDomain.Designer.cs">
       <DependentUpon>FormAddDomain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormAddFact.cs">
+    <Compile Include="Forms\FormAddStatement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormAddFact.Designer.cs">
-      <DependentUpon>FormAddFact.cs</DependentUpon>
+    <Compile Include="Forms\FormAddStatement.Designer.cs">
+      <DependentUpon>FormAddStatement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormAddRule.cs">
+    <Compile Include="Forms\FormAddRule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormAddRule.Designer.cs">
+    <Compile Include="Forms\FormAddRule.Designer.cs">
       <DependentUpon>FormAddRule.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormAddVar.cs">
+    <Compile Include="Forms\FormAddVar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormAddVar.Designer.cs">
+    <Compile Include="Forms\FormAddVar.Designer.cs">
       <DependentUpon>FormAddVar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormAsk.cs">
+    <Compile Include="Forms\FormAsk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormAsk.Designer.cs">
+    <Compile Include="Forms\FormAsk.Designer.cs">
       <DependentUpon>FormAsk.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormExplain.cs">
+    <Compile Include="Forms\FormExplain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormExplain.Designer.cs">
+    <Compile Include="Forms\FormExplain.Designer.cs">
       <DependentUpon>FormExplain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ESForm\FormResultConsult.cs">
+    <Compile Include="Forms\FormResultConsult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ESForm\FormResultConsult.Designer.cs">
+    <Compile Include="Forms\FormResultConsult.Designer.cs">
       <DependentUpon>FormResultConsult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormComponent\AddPlusButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FormComponent\AddPlusButton.Designer.cs">
-      <DependentUpon>AddPlusButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormComponent\CancelButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FormComponent\CancelButton.Designer.cs">
-      <DependentUpon>CancelButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormComponent\ESTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FormComponent\ESTextBox.Designer.cs">
-      <DependentUpon>ESTextBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormComponent\OKButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FormComponent\OKButton.Designer.cs">
-      <DependentUpon>OKButton.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -174,38 +150,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ESForm\ChooseGoalForm.resx">
-      <DependentUpon>ChooseGoalForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormChooseGoal.resx">
+      <DependentUpon>FormChooseGoal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormAddDomain.resx">
+    <EmbeddedResource Include="Forms\FormAddDomain.resx">
       <DependentUpon>FormAddDomain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormAddFact.resx">
-      <DependentUpon>FormAddFact.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAddStatement.resx">
+      <DependentUpon>FormAddStatement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormAddRule.resx">
+    <EmbeddedResource Include="Forms\FormAddRule.resx">
       <DependentUpon>FormAddRule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormAddVar.resx">
+    <EmbeddedResource Include="Forms\FormAddVar.resx">
       <DependentUpon>FormAddVar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormAsk.resx">
+    <EmbeddedResource Include="Forms\FormAsk.resx">
       <DependentUpon>FormAsk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormExplain.resx">
+    <EmbeddedResource Include="Forms\FormExplain.resx">
       <DependentUpon>FormExplain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ESForm\FormResultConsult.resx">
+    <EmbeddedResource Include="Forms\FormResultConsult.resx">
       <DependentUpon>FormResultConsult.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormComponent\AddPlusButton.resx">
-      <DependentUpon>AddPlusButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormComponent\CancelButton.resx">
-      <DependentUpon>CancelButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormComponent\OKButton.resx">
-      <DependentUpon>OKButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -229,9 +196,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FormComponent\App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\add-24px.png" />

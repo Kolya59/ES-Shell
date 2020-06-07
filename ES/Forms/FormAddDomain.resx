@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MainForm_MainForm_FormClosing_Knowledge_base_was_changed__Save_it_" xml:space="preserve">
-    <value>Knowledge base was changed. Save it?</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonDeleteDomainValue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACRJREFUSEtj
+        GAWjYBSMAvLBfzIx0QCbZmLwKBgFo2AUkA4YGAC3VBvlr28C7QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonAddDomainValue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAADZJREFUSEtj
+        GAWjAB38h2KagVELCIKhYwHMIFIx0QCbZmIwxYBqBuECoxYQBEPfglEw5AADAwBMuzPNkyXtlAAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonEditDomainValue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAI1JREFUSEvt
+        kzEKgDAQBM/PiYV/0HdY+AV73yi2YiG6ix4ckjTJaZWBATlhNzlUCn/QwBVOsOLAkxpu8HycoWvJADVc
+        5U2y4Vq6+1FGaAsWmAXDuZYD9hwALeGc75PRcD2tLeG6XMNtia4rmffXYt1hC5Mp4UFKeJRYOOdZP5ES
+        Cnc5ufJpOPk0vBBA5AJlMWxa4g3D4AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAMZJREFUSEvt
+        0k0OATEYxvG5CdYiziEuZSVYi8TCytIKZ5DgCC4gsZGw9Pl/QpNX09KNheiT/DIznbZv25kiJ+e30nle
+        v5YbWo/bl9TRxhpbnLDDEj3UkBQVsEXKmOEK9y5mjgrexg4YY2+eL1hhAB1lHwuc4foc0EA0rqOl1Y+g
+        3YRSwhBagPrr+KJF/MllgpQ0cYTGaCfBBfmTO6EPH4qKuJ1M1eDHn9hKLaLjUn8dbVUNNv6kvpQi+iYb
+        dPHxr8rJ+Y8UxR2M5lVVdxru9gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btOk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAH5JREFUSEtj
+        GAWjgFSgAaVpAryB+AcQd4B5VAYww/8DcT1IgJqApoYHAfEvIB5BhrMC8SogjgDzsAOKXB4OxCCNIANA
+        BqEDZMMbQALkgHIgBhnwB4iRfULVMEe3hKqGwwAoCEAGggymOFhwAZhPqOpydAByNdVdPgqGDWBgAACG
+        ai0gWMcdhQAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

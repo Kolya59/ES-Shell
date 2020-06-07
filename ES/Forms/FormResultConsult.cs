@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
-namespace ES.ESForm
+namespace ES.Forms
 {
     public partial class FormResultConsult : Form
     {
@@ -12,8 +12,8 @@ namespace ES.ESForm
         {
             InitializeComponent();
             _inferenceEngine = inferenceEngine;
-            readOnlyTextBoxResult.Text = $"Результат:{Environment.NewLine}{result}";
-            SetStyle();
+            readOnlyTextBoxResult.Text = $"Result:{Environment.NewLine}{result}";
+            CenterToScreen();
         }
 
         private void okButton1_Click(object sender, EventArgs e)
@@ -25,16 +25,6 @@ namespace ES.ESForm
         {
             var f = new FormExplain(_inferenceEngine.ExplainTree, _inferenceEngine.log, _inferenceEngine.Statements);
             f.ShowDialog();
-        }
-
-        private void SetStyle()
-        {
-            BackColor = SystemColors.ControlLightLight;
-            var buttonBorder = Color.Silver;
-            buttonExplain.FlatStyle = FlatStyle.Flat;
-            buttonExplain.FlatAppearance.BorderColor = buttonBorder;
-            buttonExplain.BackColor = SystemColors.ControlLightLight;
-            CenterToScreen();
         }
     }
 }

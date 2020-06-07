@@ -3,18 +3,19 @@ using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
-namespace ES.ESForm
+namespace ES.Forms
 {
     public partial class FormAddVar : Form
     {
         public enum Modes { add, edit}
-        Modes _mode;
-        KnowledgeBase _kBase;
-        Variable _var;
-        int _indexVar = -1;
-        bool _customQuestionText;
 
-        //добавление
+        private readonly Modes _mode;
+        private readonly KnowledgeBase _kBase;
+        private readonly Variable _var;
+        private readonly int _indexVar = -1;
+        private bool _customQuestionText;
+
+        // Add variable
         public FormAddVar(Modes mode, KnowledgeBase kBase)
         {
             InitializeComponent();
@@ -23,10 +24,10 @@ namespace ES.ESForm
             _var = new Variable();
             SetStyle();
             FillList();
-            esTextBoxVarName.Text = $"Var{kBase.Vars.Count}";
+            tbVarName.Text = $@"Var {kBase.Vars.Count}";
         }
 
-        //изменение
+        // Edit variable
         public FormAddVar(Modes mode, KnowledgeBase kBase, int indexVar)
         {
             InitializeComponent();
@@ -44,14 +45,16 @@ namespace ES.ESForm
         private void SetStyle()
         {
 
-            Text = "Переменная";
+            Text = "Variable";
             switch (_mode)
             {
                 case Modes.add:
-                    radioButtonZaprshivaemaya.Checked = true;
+                    rbQueried.Checked = true;
                     break;
                 case Modes.edit:
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             BackColor = SystemColors.ControlLightLight;
             CenterToScreen();
@@ -59,20 +62,22 @@ namespace ES.ESForm
 
         private void FillForm()
         {
-            textBoxQuestion.Text = _var.Question;
-            esTextBoxVarName.Text = _var.Name;
+            tbQuestion.Text = _var.Question;
+            tbVarName.Text = _var.Name;
             FillList();
             switch (_var.Type)
             {
                 case VariableType.queried:
-                    radioButtonZaprshivaemaya.Checked = true;
+                    rbQueried.Checked = true;
                     break;
                 case VariableType.queryDeduced:
-                    radioButtonVivodZapr.Checked = true;
+                    rbQueryDeducted.Checked = true;
                     break;
                 case VariableType.deduced:
-                    radioButtonVivodymaya.Checked = true;
+                    rbDeducted.Checked = true;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
         private void FillList()
@@ -87,42 +92,49 @@ namespace ES.ESForm
         private void addPlusButton_Click(object sender, EventArgs e)
         {
             var f = new FormAddDomain(0, FormAddDomain.Modes.add, _kBase);
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                FillList();
-                comboBoxDomain.SelectedIndex = 0;
-            }
+            if (f.ShowDialog() != DialogResult.OK) return;
+            FillList();
+            comboBoxDomain.SelectedIndex = 0;
         }
-
-        private void cancelButton1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void esTextBoxVarName_TextChanged(object sender, EventArgs e)
         {
-            if(!_customQuestionText && !(esTextBoxVarName.Text == ""))
+            if(!_customQuestionText && tbVarName.Text != "")
             {
-                textBoxQuestion.Text = esTextBoxVarName.Text + "?";
+                tbQuestion.Text = $"{tbVarName.Text}?";
             }
         }
 
-        private void textBoxQuestion_TextChanged(object sender, EventArgs e)
+        private void tbQuestion_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxQuestion.Text != "" && textBoxQuestion.Text != esTextBoxVarName.Text + "?")
+            if (tbQuestion.Text != "" && tbQuestion.Text != $"{tbVarName.Text}?")
             {
                 _customQuestionText = true;
             }
             else
             {
                 _customQuestionText = false;
-                textBoxQuestion.Text = esTextBoxVarName.Text + "?";
+                tbQuestion.Text = tbVarName.Text + "?";
             }
         }
 
-        private void okButton1_Click(object sender, EventArgs e)
+        private static void EmptyVarName()
         {
-            if (esTextBoxVarName.Text == "")
+            MessageBox.Show("Empty name");
+        }
+
+        private static void NoDomainError()
+        {
+            MessageBox.Show("Domain not chosen");
+        }
+
+        private void rbDeducted_CheckedChanged(object sender, EventArgs e)
+        {
+             tbQuestion.Enabled = !rbDeducted.Checked;
+        }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            if (tbVarName.Text == "")
             {
                 EmptyVarName();
                 return;
@@ -132,16 +144,16 @@ namespace ES.ESForm
                 NoDomainError();
                 return;
             }
-            _var.Name = esTextBoxVarName.Text;
-            if (!radioButtonVivodymaya.Checked)
+            _var.Name = tbVarName.Text;
+            if (!rbDeducted.Checked)
             {
-                _var.Question = textBoxQuestion.Text;
+                _var.Question = tbQuestion.Text;
             }
-            if (radioButtonVivodymaya.Checked)
+            if (rbDeducted.Checked)
                 _var.Type = VariableType.deduced;
-            if (radioButtonVivodZapr.Checked)
+            if (rbQueryDeducted.Checked)
                 _var.Type = VariableType.queryDeduced;
-            if (radioButtonZaprshivaemaya.Checked)
+            if (rbQueried.Checked)
                 _var.Type = VariableType.queried;
             _var.Domain = _kBase.Domains[comboBoxDomain.SelectedIndex];
             if (_mode == Modes.add)
@@ -158,19 +170,9 @@ namespace ES.ESForm
             Close();
         }
 
-        private void EmptyVarName()
+        private void btCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Имя переменной не может быть пустым");
-        }
-
-        private void NoDomainError()
-        {
-            MessageBox.Show("Не выбран домен для переменной.\nВыберите существующий домен или создайте новый");
-        }
-
-        private void radioButtonVivodymaya_CheckedChanged(object sender, EventArgs e)
-        {
-             textBoxQuestion.Enabled = !radioButtonVivodymaya.Checked;
+            Close();
         }
     }
 }

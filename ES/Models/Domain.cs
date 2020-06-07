@@ -54,7 +54,7 @@ namespace ES.Models
             return d;
         }
 
-        DomainValue GetValue(string value)
+        private DomainValue GetValue(string value)
         {
             return Values.Find(t => t.Value == value);
         }
