@@ -30,6 +30,7 @@ namespace ES.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormExplain));
             this.treeViewExplain = new System.Windows.Forms.TreeView();
             this.btOk = new System.Windows.Forms.Button();
             this.listBoxKnownFacts = new System.Windows.Forms.ListBox();
@@ -45,6 +46,7 @@ namespace ES.Forms
             // 
             // treeViewExplain
             // 
+            this.treeViewExplain.BackColor = System.Drawing.SystemColors.ControlLight;
             this.treeViewExplain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.treeViewExplain.Location = new System.Drawing.Point(9, 41);
             this.treeViewExplain.Margin = new System.Windows.Forms.Padding(2);
@@ -55,21 +57,22 @@ namespace ES.Forms
             // btOk
             // 
             this.btOk.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btOk.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (250)))), ((int) (((byte) (235)))));
+            this.btOk.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (0)))));
             this.btOk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int) (((byte) (132)))), ((int) (((byte) (225)))), ((int) (((byte) (132)))));
             this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btOk.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btOk.Location = new System.Drawing.Point(720, 466);
+            this.btOk.Image = ((System.Drawing.Image) (resources.GetObject("btOk.Image")));
+            this.btOk.Location = new System.Drawing.Point(547, 466);
             this.btOk.Margin = new System.Windows.Forms.Padding(2);
             this.btOk.Name = "btOk";
-            this.btOk.Size = new System.Drawing.Size(71, 31);
+            this.btOk.Size = new System.Drawing.Size(244, 31);
             this.btOk.TabIndex = 2;
-            this.btOk.Text = "OK";
             this.btOk.UseVisualStyleBackColor = false;
             this.btOk.Click += new System.EventHandler(this.okButton_Click);
             // 
             // listBoxKnownFacts
             // 
+            this.listBoxKnownFacts.BackColor = System.Drawing.SystemColors.ControlLight;
             this.listBoxKnownFacts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxKnownFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.listBoxKnownFacts.FormattingEnabled = true;
@@ -119,7 +122,7 @@ namespace ES.Forms
             // 
             // readOnlyLogs
             // 
-            this.readOnlyLogs.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.readOnlyLogs.BackColor = System.Drawing.SystemColors.ControlLight;
             this.readOnlyLogs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.readOnlyLogs.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.readOnlyLogs.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -148,6 +151,7 @@ namespace ES.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(797, 502);
             this.Controls.Add(this.btExpandTree);
             this.Controls.Add(this.tabControl1);
