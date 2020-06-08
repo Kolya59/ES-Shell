@@ -46,6 +46,7 @@ namespace ES.Forms
             this.readOnlyTextBoxResult.Margin = new System.Windows.Forms.Padding(2);
             this.readOnlyTextBoxResult.Multiline = true;
             this.readOnlyTextBoxResult.Name = "readOnlyTextBoxResult";
+            this.readOnlyTextBoxResult.ReadOnly = true;
             this.readOnlyTextBoxResult.Size = new System.Drawing.Size(265, 54);
             this.readOnlyTextBoxResult.TabIndex = 0;
             this.readOnlyTextBoxResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

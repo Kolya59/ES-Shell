@@ -13,7 +13,7 @@ namespace ES.Forms
             InitializeComponent();
             _inferenceEngine = inferenceEngine;
             readOnlyTextBoxResult.Text = $@"Result:{Environment.NewLine}{result}";
-            readOnlyTextBoxResult.Enabled = false;
+            readOnlyTextBoxResult.ReadOnly = true;
             CenterToScreen();
         }
 

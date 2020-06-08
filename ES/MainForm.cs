@@ -22,9 +22,9 @@ namespace ES
             BackColor = SystemColors.ControlLightLight;
             SplittersConstruct();
             tbQuestion.BackColor = menuStrip1.BackColor;
-            foreach(ColumnHeader c in listViewDomains.Columns)
+            foreach(ColumnHeader c in lvDomains.Columns)
             {
-                c.Width = listViewDomains.Width;
+                c.Width = lvDomains.Width;
             }
             lvVars.Columns[0].Width = (int)(lvVars.Width * 0.2);
             lvVars.Columns[1].Width = (int)(lvVars.Width * 0.4);
@@ -99,9 +99,9 @@ namespace ES
         #region Fill Form
         private void FillDomains()
         {
-            listViewDomains.Items.Clear();
+            lvDomains.Items.Clear();
             foreach (var d in _knowledgeBase.Domains)
-                listViewDomains.Items.Add(new ListViewItem(d.Name));
+                lvDomains.Items.Add(new ListViewItem(d.Name));
         }
         private void FillVars()
         {
@@ -145,46 +145,56 @@ namespace ES
         #region Domains
         private void buttonAddDomain_Click(object sender, EventArgs e)
         {
-            var idx = listViewDomains.SelectedIndices.Count > 0 ? listViewDomains.SelectedIndices[0] : 0;
+            var idx = lvDomains.SelectedIndices.Count > 0 ? lvDomains.SelectedIndices[0] : _knowledgeBase.LastDomainNumber - 1;
             var f = new FormAddDomain(idx, FormAddDomain.Modes.add, _knowledgeBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillDomains();
-            listViewDomains.SelectedIndices.Clear();
-            listViewDomains.SelectedIndices.Add(listViewDomains.Items.Count - 1);
             _kBaseChanged = true;
+            CheckDomainControls();
         }
 
         private void buttonEditDomain_Click(object sender, EventArgs e)
         {
-            var index = listViewDomains.SelectedIndices[0];
+            var index = lvDomains.SelectedIndices[0];
             var f = new FormAddDomain(FormAddDomain.Modes.edit, _knowledgeBase, index);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillDomains();
-            listViewDomains.SelectedIndices.Clear();
-            listViewDomains.SelectedIndices.Add(index);
+            lvDomains.SelectedIndices.Clear();
+            lvDomains.SelectedIndices.Add(index);
             _kBaseChanged = true;
-
+            CheckDomainControls();
         }
 
         private void buttonDeleteDomain_Click(object sender, EventArgs e)
         {
-            var index = listViewDomains.SelectedIndices[0];
+            var index = lvDomains.SelectedIndices[0];
             _knowledgeBase.DeleteDomain(index);
-            listViewDomains.SelectedIndices.Add(listViewDomains.Items.Count - 1);
             FillDomains();
             _kBaseChanged = true;
+            lvDomains.SelectedIndices.Clear();
+            listBoxDomainValues.Items.Clear();
+            CheckDomainControls();
         }
 
         private void listViewDomains_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonDeleteDomain.Enabled = listViewDomains.SelectedIndices.Count > 0;
-            buttonEditDomain.Enabled = listViewDomains.SelectedIndices.Count > 0;
+            CheckDomainControls();
             listBoxDomainValues.Items.Clear();
-            if (listViewDomains.SelectedIndices.Count <= 0 ||
-                listViewDomains.SelectedIndices[0] >= _knowledgeBase.Domains.Count) return;
-            foreach(var v in _knowledgeBase.Domains[listViewDomains.SelectedIndices[0]].Values)
+            if (lvDomains.SelectedIndices.Count <= 0 ||
+                lvDomains.SelectedIndices[0] >= _knowledgeBase.Domains.Count) return;
+            foreach(var v in _knowledgeBase.Domains[lvDomains.SelectedIndices[0]].Values)
             {
-                listBoxDomainValues.Items.Add(v);
+                listBoxDomainValues.Items.Add(v.Value);
+            }
+        }
+
+        private void CheckDomainControls()
+        {
+            btDeleteDomain.Enabled = lvDomains.SelectedIndices.Count > 0;
+            btEditDomain.Enabled = lvDomains.SelectedIndices.Count > 0;
+            if (lvDomains.SelectedItems.Count == 0)
+            {
+                listBoxDomainValues.Items.Clear();
             }
         }
         #endregion
@@ -197,7 +207,7 @@ namespace ES
             FillVars();
             FillDomains();
             lvVars.SelectedIndices.Clear();
-            lvVars.SelectedIndices.Add(lvVars.Items.Count - 1);
+            CheckVariableControls();
             _kBaseChanged = true;
         }
 
@@ -216,6 +226,7 @@ namespace ES
             lvVars.SelectedIndices.Clear();
             lvVars.SelectedIndices.Add(index);
             _kBaseChanged = true;
+            CheckVariableControls();
         }
 
         private void buttonDeleteVar_Click(object sender, EventArgs e)
@@ -227,15 +238,14 @@ namespace ES
             }
             var index = lvVars.SelectedIndices[0];
             _knowledgeBase.DeleteVar(index);
-            lvVars.SelectedIndices.Add(lvVars.Items.Count - 1);
             FillVars();
             _kBaseChanged = true;
+            CheckVariableControls();
         }
 
         private void listViewVars_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btDeleteVar.Enabled = lvVars.SelectedIndices.Count > 0;
-            btEditVar.Enabled = lvVars.SelectedIndices.Count > 0;
+            CheckVariableControls();
             if (lvVars.SelectedIndices.Count <= 0 || lvVars.SelectedIndices[0] >= _knowledgeBase.Vars.Count) return;
             if (_knowledgeBase.Vars[lvVars.SelectedIndices[0]].Type != VariableType.deduced)
             {
@@ -250,7 +260,16 @@ namespace ES
             }
             lbDomainValuesForVar.Items.Clear();
             foreach (var v in _knowledgeBase.Vars[lvVars.SelectedIndices[0]].Domain.Values)
-                lbDomainValuesForVar.Items.Add(v);
+                lbDomainValuesForVar.Items.Add(v.Value);
+        }
+
+        private void CheckVariableControls()
+        {
+            btDeleteVar.Enabled = lvVars.SelectedIndices.Count > 0;
+            btEditVar.Enabled = lvVars.SelectedIndices.Count > 0;
+            if (lbDomainValuesForVar.SelectedItems.Count != 0) return;
+            tbQuestion.Text = "";
+            lbDomainValuesForVar.Items.Clear();
         }
         #endregion
 
@@ -264,8 +283,8 @@ namespace ES
             FillVars();
             FillDomains();
             lvRules.SelectedIndices.Clear();
-            lvRules.SelectedIndices.Add(lvRules.Items.Count - 1);
             _kBaseChanged = true;
+            CheckRuleControls();
         }
 
         private void buttonEditRule_Click(object sender, EventArgs e)
@@ -279,6 +298,7 @@ namespace ES
             lvRules.SelectedIndices.Clear();
             lvRules.SelectedIndices.Add(index);
             _kBaseChanged = true;
+            CheckRuleControls();
         }
 
         private void buttonDeleteRule_Click(object sender, EventArgs e)
@@ -286,20 +306,28 @@ namespace ES
             var index = lvRules.SelectedIndices[0];
             _knowledgeBase.DeleteRule(index);
             lvRules.SelectedIndices.Clear();
-            lvRules.SelectedIndices.Add(lvRules.Items.Count - 1);
             FillRules();
             _kBaseChanged = true;
+            CheckRuleControls();
         }
 
         private void listViewRules_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btDeleteRule.Enabled = lvRules.SelectedIndices.Count > 0;
-            btEditRule.Enabled = lvRules.SelectedIndices.Count > 0;
+            CheckRuleControls();
             if (lvRules.SelectedIndices.Count <= 0 ||
                 lvRules.SelectedIndices[0] >= _knowledgeBase.Rules.Count) return;
             tbConclusion.Text = _knowledgeBase.Rules[lvRules.SelectedIndices[0]].PrintConclusion();
             tbCondition.Text = _knowledgeBase.Rules[lvRules.SelectedIndices[0]].PrintPremise();
         }
+
+        private void CheckRuleControls()
+        {
+            btDeleteRule.Enabled = lvRules.SelectedIndices.Count > 0;
+            btEditRule.Enabled = lvRules.SelectedIndices.Count > 0;
+            tbCondition.Text = lvRules.SelectedItems.Count == 0 ? "" : tbCondition.Text;
+            tbConclusion.Text = lvRules.SelectedItems.Count == 0 ? "" : tbConclusion.Text;
+        }
+        
         #endregion
 
         #region Consult

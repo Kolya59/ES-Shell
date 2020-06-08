@@ -61,6 +61,7 @@ namespace ES.Forms
             this.tbQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.tbQuestion.Multiline = true;
             this.tbQuestion.Name = "tbQuestion";
+            this.tbQuestion.ReadOnly = true;
             this.tbQuestion.Size = new System.Drawing.Size(302, 68);
             this.tbQuestion.TabIndex = 0;
             // 

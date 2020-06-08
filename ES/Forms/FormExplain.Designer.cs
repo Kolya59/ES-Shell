@@ -131,6 +131,7 @@ namespace ES.Forms
             this.readOnlyLogs.Margin = new System.Windows.Forms.Padding(2);
             this.readOnlyLogs.Multiline = true;
             this.readOnlyLogs.Name = "readOnlyLogs";
+            this.readOnlyLogs.ReadOnly = true;
             this.readOnlyLogs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.readOnlyLogs.Size = new System.Drawing.Size(238, 408);
             this.readOnlyLogs.TabIndex = 0;

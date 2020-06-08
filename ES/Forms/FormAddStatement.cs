@@ -54,11 +54,10 @@ namespace ES.Forms
             Text = "Statement";
             Text += _factType switch
             {
-                FactType.premise => " conditions",
-                FactType.conclusion => " conclusions",
+                FactType.premise => " condition",
+                FactType.conclusion => " conclusion",
                 _ => throw new ArgumentOutOfRangeException()
             };
-            BackColor = SystemColors.ControlLightLight;
             CenterToScreen();
         }
 

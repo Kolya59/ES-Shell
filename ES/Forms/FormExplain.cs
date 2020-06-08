@@ -15,7 +15,6 @@ namespace ES.Forms
         public FormExplain(ExplainNode explainTree, List<Log> logs, List<Statement> knownFacts)
         {
             InitializeComponent();
-            SetStyle();
             _explainTree = explainTree;
             _logs = logs;
             _knownFacts = knownFacts;
@@ -65,15 +64,6 @@ namespace ES.Forms
             tree.Expand();
             foreach (TreeNode node in tree.Nodes)
                 ExpandTreeView(node);
-        }
-
-        private void SetStyle()
-        {
-            BackColor = SystemColors.ControlLightLight;
-            var buttonBorder = Color.Silver;
-            btExpandTree.FlatStyle = FlatStyle.Flat;
-            btExpandTree.FlatAppearance.BorderColor = buttonBorder;
-            btExpandTree.BackColor = SystemColors.ControlLightLight;
         }
 
         private void btExpandTree_Click(object sender, EventArgs e)

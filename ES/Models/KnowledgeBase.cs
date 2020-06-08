@@ -26,12 +26,12 @@ namespace ES.Models
         #region Domains
         public bool AddDomain(int indexInsertAfter, Domain domain)
         {
-            if(Domains.Exists(x => x.Name == domain.Name))
+            if (Domains.Exists(x => x.Name == domain.Name))
             {
                 AlreadyExistsError("Domain");
                 return false;
             }
-            if(domain.Values.Count == 0)
+            if (domain.Values.Count == 0)
             {
                 DomainCantBeEmptyError();
                 return false;
@@ -89,7 +89,7 @@ namespace ES.Models
         #endregion
 
         #region Vars
-        public bool AddVar(Variable var)
+        public bool AddVar(int idx, Variable var)
         {
             if (Vars.Exists(x => x.Name == var.Name))
             {
@@ -101,7 +101,7 @@ namespace ES.Models
                 DomainCantBeEmptyError();
                 return false;
             }
-            Vars.Insert(0, var);
+            Vars.Insert(idx, var);
             IsChanged = true;
             LastVarNumber++;
             return true;

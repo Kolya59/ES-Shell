@@ -146,7 +146,7 @@ namespace ES.Forms
             this.groupBox5.Size = new System.Drawing.Size(246, 82);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "tbQuestion";
+            this.groupBox5.Text = "Question";
             // 
             // tbQuestion
             // 

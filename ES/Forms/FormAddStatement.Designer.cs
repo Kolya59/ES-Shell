@@ -47,7 +47,7 @@ namespace ES.Forms
             this.comboBoxVar.Location = new System.Drawing.Point(9, 23);
             this.comboBoxVar.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxVar.Name = "comboBoxVar";
-            this.comboBoxVar.Size = new System.Drawing.Size(220, 21);
+            this.comboBoxVar.Size = new System.Drawing.Size(243, 21);
             this.comboBoxVar.TabIndex = 0;
             this.comboBoxVar.SelectedIndexChanged += new System.EventHandler(this.comboBoxVar_SelectedIndexChanged);
             // 
@@ -57,7 +57,7 @@ namespace ES.Forms
             this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btAdd.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.btAdd.Image = ((System.Drawing.Image) (resources.GetObject("btAdd.Image")));
-            this.btAdd.Location = new System.Drawing.Point(233, 23);
+            this.btAdd.Location = new System.Drawing.Point(256, 23);
             this.btAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(27, 21);
@@ -84,7 +84,7 @@ namespace ES.Forms
             this.comboBoxDomain.Location = new System.Drawing.Point(9, 64);
             this.comboBoxDomain.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDomain.Name = "comboBoxDomain";
-            this.comboBoxDomain.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxDomain.Size = new System.Drawing.Size(212, 21);
             this.comboBoxDomain.TabIndex = 3;
             // 
             // btCancel
@@ -93,7 +93,7 @@ namespace ES.Forms
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.btCancel.Image = ((System.Drawing.Image) (resources.GetObject("btCancel.Image")));
-            this.btCancel.Location = new System.Drawing.Point(202, 64);
+            this.btCancel.Location = new System.Drawing.Point(225, 64);
             this.btCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(27, 21);
@@ -108,7 +108,7 @@ namespace ES.Forms
             this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btOk.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.btOk.Image = ((System.Drawing.Image) (resources.GetObject("btOk.Image")));
-            this.btOk.Location = new System.Drawing.Point(233, 64);
+            this.btOk.Location = new System.Drawing.Point(256, 64);
             this.btOk.Margin = new System.Windows.Forms.Padding(2);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(27, 21);
@@ -122,7 +122,7 @@ namespace ES.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(268, 96);
+            this.ClientSize = new System.Drawing.Size(294, 96);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.comboBoxDomain);

@@ -100,6 +100,10 @@ namespace ES.Forms
 
         private void buttonDeleteDomainValue_Click(object sender, EventArgs e)
         {
+            if (_domain.Values.Count == 0)
+            {
+                return;
+            }
             if (_kBase.IsDomainValueUsed(_domain, _domain.Values[listBoxDomainValues.SelectedIndex].Value.Trim()))
             {
                 DomainValueUsed();

@@ -12,7 +12,7 @@ namespace ES.Forms
         private readonly Modes _mode;
         private readonly KnowledgeBase _kBase;
         private readonly Variable _var;
-        private readonly int _indexVar = -1;
+        private readonly int _indexVar;
         private bool _customQuestionText;
 
         // Add variable
@@ -22,6 +22,7 @@ namespace ES.Forms
             _mode = mode;
             _kBase = kBase;
             _var = new Variable();
+            _indexVar = _kBase.LastVarNumber - 1;
             SetStyle();
             FillList();
             tbVarName.Text = $@"Var {kBase.Vars.Count}";
@@ -91,7 +92,7 @@ namespace ES.Forms
         }
         private void addPlusButton_Click(object sender, EventArgs e)
         {
-            var f = new FormAddDomain(0, FormAddDomain.Modes.add, _kBase);
+            var f = new FormAddDomain(_kBase.LastDomainNumber - 1, FormAddDomain.Modes.add, _kBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             comboBoxDomain.SelectedIndex = 0;
@@ -158,7 +159,7 @@ namespace ES.Forms
             _var.Domain = _kBase.Domains[comboBoxDomain.SelectedIndex];
             if (_mode == Modes.add)
             {
-                if (!_kBase.AddVar(_var))
+                if (!_kBase.AddVar(_indexVar, _var))
                     return;
             }
             else

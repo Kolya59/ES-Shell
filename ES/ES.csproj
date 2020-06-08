@@ -124,11 +124,11 @@
     <Compile Include="Forms\FormAddVar.Designer.cs">
       <DependentUpon>FormAddVar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAsk.cs">
+    <Compile Include="Forms\FormQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAsk.Designer.cs">
-      <DependentUpon>FormAsk.cs</DependentUpon>
+    <Compile Include="Forms\FormQuestion.Designer.cs">
+      <DependentUpon>FormQuestion.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormExplain.cs">
       <SubType>Form</SubType>
@@ -165,8 +165,8 @@
     <EmbeddedResource Include="Forms\FormAddVar.resx">
       <DependentUpon>FormAddVar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAsk.resx">
-      <DependentUpon>FormAsk.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormQuestion.resx">
+      <DependentUpon>FormQuestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormExplain.resx">
       <DependentUpon>FormExplain.cs</DependentUpon>
