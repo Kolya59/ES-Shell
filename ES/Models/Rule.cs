@@ -11,14 +11,20 @@ namespace ES.Models
         public List<Statement> Condition { get; set; }
         public List<Statement> Conclusion { get; set; }
         public string Reason { get; set; }
-        public Rule(string name, List<Statement> premise, List<Statement> conclusion, string reason)
+        public Rule(string name, IEnumerable<Statement> conditions, IEnumerable<Statement> conclusions, string reason)
         {
             Condition = new List<Statement>();
-            foreach (var f in premise)
+            foreach (var f in conditions)
+            {
                 Condition.Add(f);
+            }
+
             Conclusion = new List<Statement>();
-            foreach (var f in conclusion)
+            foreach (var f in conclusions)
+            {
                 Conclusion.Add(f);
+            }
+
             Reason = reason;
             Name = name;
         }
@@ -33,13 +39,13 @@ namespace ES.Models
             return new Rule(Name, Condition, Conclusion, Reason);
         }
 
-        public override string ToString() => $"IF {PrintPremise()} THEN {PrintConclusion()}";
+        public override string ToString() => $"IF {PrintCondition()} THEN {PrintConclusion()}";
 
         public bool AddPremiseFact(Statement f)
         {
             if (Condition.Exists(x => x.Variable == f.Variable))
             {
-                FactAlreadyExistsError();
+                StatementAlreadyExistsError();
                 return false;
             }
             Condition.Add(f);
@@ -50,7 +56,7 @@ namespace ES.Models
         {
             if (Condition.Exists(x => x.Variable == f.Variable) && Condition.FindIndex(x => x.Variable == f.Variable) != indexFact)
             {
-                FactAlreadyExistsError();
+                StatementAlreadyExistsError();
                 return false;
             }
             Condition[indexFact] = f;
@@ -67,7 +73,7 @@ namespace ES.Models
         {
             if (Conclusion.Exists(x => x.Variable == f.Variable))
             {
-                FactAlreadyExistsError();
+                StatementAlreadyExistsError();
                 return false;
             }
             Conclusion.Add(f);
@@ -79,7 +85,7 @@ namespace ES.Models
             if (Conclusion.Exists(x => x.Variable == f.Variable) && 
                 Conclusion.FindIndex(x => x.Variable == f.Variable) != indexFact)
             {
-                FactAlreadyExistsError();
+                StatementAlreadyExistsError();
                 return false;
             }
             Conclusion[indexFact] = f;
@@ -92,7 +98,7 @@ namespace ES.Models
             return true;
         }
 
-        public string PrintPremise()
+        public string PrintCondition()
         {
             var r = "";
             for (var i = 0; i < Condition.Count; i++)
@@ -116,9 +122,10 @@ namespace ES.Models
             return r;
         }
 
-        private void FactAlreadyExistsError()
+        // TODO: Check
+        private void StatementAlreadyExistsError()
         {
-            MessageBox.Show("This variable already used in the rule", "Error");
+            MessageBox.Show("This statement already used in the rule", "Error");
         }
     }
 }

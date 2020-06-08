@@ -168,6 +168,11 @@ namespace ES
         private void buttonDeleteDomain_Click(object sender, EventArgs e)
         {
             var index = lvDomains.SelectedIndices[0];
+            if (_knowledgeBase.IsDomainUsed(_knowledgeBase.Domains[index]))
+            {
+                MessageBox.Show("This domain is used", "Error");
+                return;
+            }
             _knowledgeBase.DeleteDomain(index);
             FillDomains();
             _kBaseChanged = true;
@@ -317,7 +322,7 @@ namespace ES
             if (lvRules.SelectedIndices.Count <= 0 ||
                 lvRules.SelectedIndices[0] >= _knowledgeBase.Rules.Count) return;
             tbConclusion.Text = _knowledgeBase.Rules[lvRules.SelectedIndices[0]].PrintConclusion();
-            tbCondition.Text = _knowledgeBase.Rules[lvRules.SelectedIndices[0]].PrintPremise();
+            tbCondition.Text = _knowledgeBase.Rules[lvRules.SelectedIndices[0]].PrintCondition();
         }
 
         private void CheckRuleControls()
@@ -532,12 +537,13 @@ namespace ES
 
         private void menuReasoning_Click(object sender, EventArgs e)
         {
+            // TODO: Check invalid goal
             if (inferenceEngine?.ExplainTree == null)
             {
-                MessageBox.Show("Consultation is not finished");
+                MessageBox.Show("Consultation is not finished", "Error");
                 return;
             }
-            var f = new FormExplain(inferenceEngine.ExplainTree, inferenceEngine.log, inferenceEngine.Statements);
+            var f = new FormExplain(inferenceEngine.ExplainTree, inferenceEngine.log, inferenceEngine.WorkingMemory);
             f.ShowDialog();
         }
     }

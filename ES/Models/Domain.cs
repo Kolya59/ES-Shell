@@ -26,7 +26,7 @@ namespace ES.Models
         }
         public bool DeleteValue(int index)
         {   
-             Values.RemoveAt(index);
+            Values.RemoveAt(index);
             return true;
         }
 

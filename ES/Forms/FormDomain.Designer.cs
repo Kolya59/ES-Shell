@@ -141,6 +141,7 @@ namespace ES.Forms
             this.tbDomainValue.Name = "tbDomainValue";
             this.tbDomainValue.Size = new System.Drawing.Size(248, 19);
             this.tbDomainValue.TabIndex = 8;
+            this.tbDomainValue.TextChanged += new System.EventHandler(this.tbDomainValue_TextChanged);
             this.tbDomainValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.esTextBoxDomainValue_KeyUp);
             // 
             // btCancel

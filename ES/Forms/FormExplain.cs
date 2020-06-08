@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
@@ -50,7 +49,7 @@ namespace ES.Forms
             else
             {
                 tree.Nodes.Add($"Goal: {node.Goal} (deducted)");
-                tree.Nodes[tree.Nodes.Count - 1].Nodes.Add($"IF {node.FiredRule.PrintPremise()}");
+                tree.Nodes[tree.Nodes.Count - 1].Nodes.Add($"IF {node.FiredRule.PrintCondition()}");
                 tree.Nodes[tree.Nodes.Count - 1].Nodes.Add($"THEN {node.FiredRule.PrintConclusion()}");
                 foreach(var child in node.SubGoals)
                 {

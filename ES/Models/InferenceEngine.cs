@@ -17,7 +17,7 @@ namespace ES.Models
 
         public ExplainNode ExplainTree { get; private set; }
         public List<Log> log;
-        public List<Statement> Statements { get; private set; }
+        public List<Statement> WorkingMemory { get; private set; }
         public InferenceEngine(KnowledgeBase kBase)
         {
             _kBase = kBase;
@@ -28,12 +28,13 @@ namespace ES.Models
             PrimaryGoal = primaryGoal;
         }
 
+        // TODO: Разорбрать
         public Statement Start()
         {
             if (PrimaryGoal == null) { throw new Exception("primary goal does not set"); }
 
             _goals = new Stack<Variable>();
-            Statements = new List<Statement>();
+            WorkingMemory = new List<Statement>();
             _executedRules = new List<Rule>();
             _wrongRules = new List<Rule>();
             log = new List<Log>();
@@ -45,7 +46,7 @@ namespace ES.Models
                 // Получаем очередную цель
                 var currentGoal = _goals.Peek();
                 // Если целевая переменная означена - переходим к следующей
-                if (Statements.Find(x => x.Variable.Name == currentGoal.Name) != null)
+                if (WorkingMemory.Find(x => x.Variable.Name == currentGoal.Name) != null)
                 {
                     _goals.Pop();
                     continue;
@@ -56,7 +57,7 @@ namespace ES.Models
                     var statement = new Statement {Variable = currentGoal};
                     if (DialogResult.OK != new FormAsk(statement).ShowDialog()) return null;
                     _goals.Pop();
-                    Statements.Add(statement);
+                    WorkingMemory.Add(statement);
                     log.Add(new Log(statement.Variable.Question, statement.Value));
                     AddNewExplainNodeAsked(statement);
                     continue;
@@ -74,7 +75,7 @@ namespace ES.Models
                     foreach (var condition in r.Condition)
                     {
                         // Если переменная означена, то сверяем значение с утверждением
-                        var known = Statements.Find(x => x.Variable.Name == condition.Variable.Name);
+                        var known = WorkingMemory.Find(x => x.Variable.Name == condition.Variable.Name);
                         if (known == null || known.Value != condition.Value) isWrong = true;
                         if (known != null) continue;
                         _goals.Push(condition.Variable);
@@ -93,9 +94,8 @@ namespace ES.Models
                     _executedRules.Add(r);
                     
                     // Запоминаем значения всех переменных из посылки
-                    foreach (var c in r.Conclusion) { Statements.Add(new Statement {Variable = c.Variable, Value = c.Value}); }
-
-                    ;
+                    foreach (var c in r.Conclusion) { WorkingMemory.Add(new Statement {Variable = c.Variable, Value = c.Value}); }
+                    
                     // Добавляем запись о результате в лог
                     AddNewExplainNode(r, r.Conclusion.Find(c => c.Variable.Name == currentGoal.Name));
                     // Извлекаем переменную из целей
@@ -104,30 +104,26 @@ namespace ES.Models
                 else
                 {
                     // Если это выводимо-запрашиваемая, но не ГЛАВНАЯ ЦЕЛЬ, то запросить
-                    if (currentGoal.Type == VariableType.queryDeduced)
-                    {
-                        var statement = new Statement {Variable = currentGoal};
-                        var f = new FormAsk(statement);
-                        if (DialogResult.OK == f.ShowDialog())
-                        {
-                            _goals.Pop();
-                            Statements.Add(statement);
-                            log.Add(new Log(statement.Variable.Question, statement.Value));
-                            AddNewExplainNodeAsked(statement);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
+                    if (currentGoal.Type != VariableType.queryDeduced)
                     {
                         return null;
                     }
+
+                    var statement = new Statement {Variable = currentGoal};
+                    var f = new FormAsk(statement);
+                    if (DialogResult.OK != f.ShowDialog())
+                    {
+                        return null;
+                    }
+
+                    _goals.Pop();
+                    WorkingMemory.Add(statement);
+                    log.Add(new Log(statement.Variable.Question, statement.Value));
+                    AddNewExplainNodeAsked(statement);
                 }
             }
 
-            var res = Statements.Find(x => x.Variable.Name == PrimaryGoal.Name);
+            var res = WorkingMemory.Find(x => x.Variable.Name == PrimaryGoal.Name);
             if (res != null)
             {
                 ExplainTree = _explainNodes.Find(x => x.Goal.Variable.Name == PrimaryGoal.Name);

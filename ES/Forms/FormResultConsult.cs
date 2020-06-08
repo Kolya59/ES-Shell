@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
@@ -24,7 +23,7 @@ namespace ES.Forms
 
         private void buttonExplain_Click(object sender, EventArgs e)
         {
-            var f = new FormExplain(_inferenceEngine.ExplainTree, _inferenceEngine.log, _inferenceEngine.Statements);
+            var f = new FormExplain(_inferenceEngine.ExplainTree, _inferenceEngine.log, _inferenceEngine.WorkingMemory);
             f.ShowDialog();
         }
     }

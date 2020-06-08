@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using ES.Models;
 
@@ -25,6 +24,7 @@ namespace ES.Forms
             tbDomainName.Text = $@"Domain {kBase.Domains.Count}";
             CenterToScreen();
             _insertAfterIdx = insertAfterIdx;
+            CheckControls();
         }
 
         // Edit domain
@@ -37,6 +37,7 @@ namespace ES.Forms
             _domain = kBase.Domains[domainIndex].Copy();
             CenterToScreen();
             FillForm();
+            CheckControls();
         }
 
         private void FillForm()
@@ -54,6 +55,14 @@ namespace ES.Forms
             foreach (var v in _domain.Values)
                 listBoxDomainValues.Items.Add(v.Value);
         }
+
+        private void CheckControls()
+        {
+            buttonEditDomainValue.Enabled = listBoxDomainValues.Items.Count != 0 &&
+                                            (string) listBoxDomainValues.SelectedItems[0] != tbDomainValue.Text;
+            buttonDeleteDomainValue.Enabled = listBoxDomainValues.Items.Count != 0;
+        }
+        
         private void buttonAddDomainValue_Click(object sender, EventArgs e)
         {
             if (tbDomainValue.Text == "")
@@ -68,6 +77,7 @@ namespace ES.Forms
             }
             FillList();
             listBoxDomainValues.SelectedIndex = _domain.Values.Count-1;
+            CheckControls();
         }
 
         private void listBoxDomainValues_DragDrop(object sender, DragEventArgs e)
@@ -96,6 +106,7 @@ namespace ES.Forms
             }
             FillList();
             listBoxDomainValues.SelectedIndex = index;
+            CheckControls();
         }
 
         private void buttonDeleteDomainValue_Click(object sender, EventArgs e)
@@ -116,6 +127,7 @@ namespace ES.Forms
             }
             FillList();
             listBoxDomainValues.SelectedIndex = _domain.Values.Count - 1;
+            CheckControls();
         }
 
         private static void UnknownError()
@@ -164,7 +176,6 @@ namespace ES.Forms
             tbDomainValue.Text = "";
             tbDomainName.Text = s;
             e.Handled = true;
-
         }
 
         private void btOk_Click(object sender, EventArgs e)
@@ -192,6 +203,11 @@ namespace ES.Forms
         private void btCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tbDomainValue_TextChanged(object sender, EventArgs e)
+        {
+            CheckControls();
         }
     }
 }

@@ -67,6 +67,8 @@ namespace ES.Models
             return true;
         }
 
+        public bool IsDomainUsed(Domain domain) => Vars.Exists(v => v.Domain.Name == domain.Name);
+
         public bool IsDomainValueUsed(Domain domain, string value)
         {
             var notUsed = true;
@@ -200,7 +202,7 @@ namespace ES.Models
 
         private void DomainCantBeEmptyError()
         {
-            MessageBox.Show("Domain should not be empty");
+            MessageBox.Show("Domain should not be empty", "Error");
         }
 
         #endregion

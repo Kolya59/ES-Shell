@@ -100,29 +100,29 @@
     <Compile Include="Forms\FormChooseGoal.Designer.cs">
       <DependentUpon>FormChooseGoal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddDomain.cs">
+    <Compile Include="Forms\FormDomain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddDomain.Designer.cs">
-      <DependentUpon>FormAddDomain.cs</DependentUpon>
+    <Compile Include="Forms\FormDomain.Designer.cs">
+      <DependentUpon>FormDomain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddStatement.cs">
+    <Compile Include="Forms\FormStatement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddStatement.Designer.cs">
-      <DependentUpon>FormAddStatement.cs</DependentUpon>
+    <Compile Include="Forms\FormStatement.Designer.cs">
+      <DependentUpon>FormStatement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddRule.cs">
+    <Compile Include="Forms\FormRule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddRule.Designer.cs">
-      <DependentUpon>FormAddRule.cs</DependentUpon>
+    <Compile Include="Forms\FormRule.Designer.cs">
+      <DependentUpon>FormRule.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddVar.cs">
+    <Compile Include="Forms\FormVar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddVar.Designer.cs">
-      <DependentUpon>FormAddVar.cs</DependentUpon>
+    <Compile Include="Forms\FormVar.Designer.cs">
+      <DependentUpon>FormVar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormQuestion.cs">
       <SubType>Form</SubType>
@@ -153,17 +153,17 @@
     <EmbeddedResource Include="Forms\FormChooseGoal.resx">
       <DependentUpon>FormChooseGoal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddDomain.resx">
-      <DependentUpon>FormAddDomain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDomain.resx">
+      <DependentUpon>FormDomain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddStatement.resx">
-      <DependentUpon>FormAddStatement.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormStatement.resx">
+      <DependentUpon>FormStatement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddRule.resx">
-      <DependentUpon>FormAddRule.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormRule.resx">
+      <DependentUpon>FormRule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddVar.resx">
-      <DependentUpon>FormAddVar.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormVar.resx">
+      <DependentUpon>FormVar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormQuestion.resx">
       <DependentUpon>FormQuestion.cs</DependentUpon>
