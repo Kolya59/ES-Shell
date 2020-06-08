@@ -14,6 +14,7 @@ namespace ES.Forms
             CenterToScreen();
             _statement = statement;
             tbQuestion.Text = statement.Variable.Question;
+            tbQuestion.Enabled = false;
 
             for (var i=0; i < statement.Variable.Domain.Values.Count; i++)
             {
