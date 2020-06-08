@@ -66,6 +66,11 @@ namespace ES.Forms
                 ExpandTreeView(node);
         }
 
+        private static void CollapseTreeView(TreeNode tree)
+        {
+            tree.Collapse();
+        }
+
         private void btExpandTree_Click(object sender, EventArgs e)
         {
             ExpandTreeView(treeViewExplain.Nodes[0]);
@@ -74,6 +79,11 @@ namespace ES.Forms
         private void okButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btCollapse_Click(object sender, EventArgs e)
+        {
+            CollapseTreeView(treeViewExplain.Nodes[0]);
         }
     }
 }

@@ -39,6 +39,7 @@ namespace ES.Forms
             this.tabPageUserAskLogs = new System.Windows.Forms.TabPage();
             this.readOnlyLogs = new System.Windows.Forms.TextBox();
             this.btExpandTree = new System.Windows.Forms.Button();
+            this.btCollapse = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageVars.SuspendLayout();
             this.tabPageUserAskLogs.SuspendLayout();
@@ -138,15 +139,31 @@ namespace ES.Forms
             // 
             // btExpandTree
             // 
+            this.btExpandTree.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (0)))));
+            this.btExpandTree.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btExpandTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.btExpandTree.Location = new System.Drawing.Point(9, 10);
             this.btExpandTree.Margin = new System.Windows.Forms.Padding(2);
             this.btExpandTree.Name = "btExpandTree";
-            this.btExpandTree.Size = new System.Drawing.Size(527, 27);
+            this.btExpandTree.Size = new System.Drawing.Size(251, 27);
             this.btExpandTree.TabIndex = 4;
             this.btExpandTree.Text = "Expand all";
-            this.btExpandTree.UseVisualStyleBackColor = true;
+            this.btExpandTree.UseVisualStyleBackColor = false;
             this.btExpandTree.Click += new System.EventHandler(this.btExpandTree_Click);
+            // 
+            // btCollapse
+            // 
+            this.btCollapse.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (192)))), ((int) (((byte) (192)))));
+            this.btCollapse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCollapse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.btCollapse.Location = new System.Drawing.Point(286, 10);
+            this.btCollapse.Margin = new System.Windows.Forms.Padding(2);
+            this.btCollapse.Name = "btCollapse";
+            this.btCollapse.Size = new System.Drawing.Size(251, 27);
+            this.btCollapse.TabIndex = 5;
+            this.btCollapse.Text = "Collapse all";
+            this.btCollapse.UseVisualStyleBackColor = false;
+            this.btCollapse.Click += new System.EventHandler(this.btCollapse_Click);
             // 
             // FormExplain
             // 
@@ -154,6 +171,7 @@ namespace ES.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(797, 502);
+            this.Controls.Add(this.btCollapse);
             this.Controls.Add(this.btExpandTree);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btOk);
@@ -168,6 +186,7 @@ namespace ES.Forms
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Button btCollapse;
         private System.Windows.Forms.Button btExpandTree;
         private System.Windows.Forms.Button btOk;
         private System.Windows.Forms.ListBox listBoxKnownFacts;
