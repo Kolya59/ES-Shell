@@ -12,7 +12,7 @@ namespace ES.Forms
         {
             InitializeComponent();
             _inferenceEngine = inferenceEngine;
-            readOnlyTextBoxResult.Text = $"Result:{Environment.NewLine}{result}";
+            readOnlyTextBoxResult.Text = $@"Result:{Environment.NewLine}{result}";
             CenterToScreen();
         }
 

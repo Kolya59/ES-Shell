@@ -96,7 +96,7 @@ namespace ES.Models
                     foreach (var c in r.Conclusion) { Statements.Add(new Statement {Variable = c.Variable, Value = c.Value}); }
 
                     ;
-                    // Добавляем запись о результате в дог
+                    // Добавляем запись о результате в лог
                     AddNewExplainNode(r, r.Conclusion.Find(c => c.Variable.Name == currentGoal.Name));
                     // Извлекаем переменную из целей
                     _goals.Pop();

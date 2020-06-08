@@ -23,7 +23,7 @@ namespace ES.Forms
             _kBase = kBase;
             _domain = new Domain();
             tbDomainName.Text = $@"Domain {kBase.Domains.Count}";
-            SetStyle();
+            CenterToScreen();
             _insertAfterIdx = insertAfterIdx;
         }
 
@@ -35,31 +35,8 @@ namespace ES.Forms
             _kBase = kBase;
             _domainIndex = domainIndex;
             _domain = kBase.Domains[domainIndex].Copy();
-            SetStyle();
-            FillForm();
-        }
-
-        private void SetStyle()
-        {
-            Text = "Domain";
-            BackColor = SystemColors.ControlLightLight;
-            buttonDeleteDomainValue.Enabled = false;
-            buttonEditDomainValue.Enabled = false;
-
-            var buttonBorder = Color.Silver;
-            buttonAddDomainValue.FlatStyle = FlatStyle.Flat;
-            buttonAddDomainValue.FlatAppearance.BorderColor = buttonBorder;
-            buttonAddDomainValue.BackColor = SystemColors.ControlLightLight;
-
-            buttonDeleteDomainValue.FlatStyle = FlatStyle.Flat;
-            buttonDeleteDomainValue.FlatAppearance.BorderColor = buttonBorder;
-            buttonDeleteDomainValue.BackColor = SystemColors.ControlLightLight;
-
-            buttonEditDomainValue.FlatStyle = FlatStyle.Flat;
-            buttonEditDomainValue.FlatAppearance.BorderColor = buttonBorder;
-            buttonEditDomainValue.BackColor = SystemColors.ControlLightLight;
-
             CenterToScreen();
+            FillForm();
         }
 
         private void FillForm()
@@ -139,27 +116,27 @@ namespace ES.Forms
 
         private static void UnknownError()
         {
-            MessageBox.Show("Unknown error");
+            MessageBox.Show("Unknown error", "Error");
         }
 
         private static void EmptyDomainValue()
         {
-            MessageBox.Show("Empty domain value");
+            MessageBox.Show("Empty domain value", "Error");
         }
 
         private static void DomainValueAlreadyExists()
         {
-            MessageBox.Show("Value already exists");
+            MessageBox.Show("Value already exists", "Error");
         }
 
         private static void EmptyDomainName()
         {
-            MessageBox.Show("Empty domain name");
+            MessageBox.Show("Empty domain name", "Error");
         }
 
         private static void DomainValueUsed()
         {
-            MessageBox.Show("Value already used");
+            MessageBox.Show("Value already used", "Error");
         }
 
         private void listBoxDomainValues_SelectedIndexChanged(object sender, EventArgs e)

@@ -184,7 +184,7 @@ namespace ES
                 listViewDomains.SelectedIndices[0] >= _knowledgeBase.Domains.Count) return;
             foreach(var v in _knowledgeBase.Domains[listViewDomains.SelectedIndices[0]].Values)
             {
-                listBoxDomainValues.Items.Add(v.Value);
+                listBoxDomainValues.Items.Add(v);
             }
         }
         #endregion
@@ -205,7 +205,7 @@ namespace ES
         {
             if (_knowledgeBase.IsVarUsed(_knowledgeBase.Vars[lvVars.SelectedIndices[0]].Name))
             {
-                MessageBox.Show("This variable is used");
+                MessageBox.Show("This variable is used", "Error");
                 return;
             }
             var index = lvVars.SelectedIndices[0];
@@ -222,7 +222,7 @@ namespace ES
         {
             if (_knowledgeBase.IsVarUsed(_knowledgeBase.Vars[lvVars.SelectedIndices[0]].Name))
             {
-                MessageBox.Show("This variable is used");
+                MessageBox.Show("This variable is used", "Error");
                 return;
             }
             var index = lvVars.SelectedIndices[0];
@@ -250,7 +250,7 @@ namespace ES
             }
             lbDomainValuesForVar.Items.Clear();
             foreach (var v in _knowledgeBase.Vars[lvVars.SelectedIndices[0]].Domain.Values)
-                lbDomainValuesForVar.Items.Add(v.Value);
+                lbDomainValuesForVar.Items.Add(v);
         }
         #endregion
 
@@ -343,7 +343,7 @@ namespace ES
             }
             catch (Exception err)
             {
-                MessageBox.Show($"Failed to load file: {err.Message}");
+                MessageBox.Show($"Failed to load file: {err.Message}", "Error");
             }
             finally
             {
@@ -354,28 +354,28 @@ namespace ES
         private void menuFile_SaveAs_Click(object sender, EventArgs e) => SaveAs();
 
         // The LVItem being dragged
-        private ListViewItem _itemDnD;
+        private ListViewItem _dropped;
         private void listViewRules_MouseDown(object sender, MouseEventArgs e)
         {
-            _itemDnD = lvRules.GetItemAt(e.X, e.Y);
+            _dropped = lvRules.GetItemAt(e.X, e.Y);
         }
 
         private void listViewRules_MouseUp(object sender, MouseEventArgs e)
         {
 
-            if (_itemDnD == null) return;
+            if (_dropped == null) return;
             var itemOver = lvRules.GetItemAt(0, e.Y);
 
-            if (itemOver == null || itemOver == _itemDnD)
+            if (itemOver == null || itemOver == _dropped)
             {
                 Cursor = Cursors.Default;
                 return;
             }
-            var r = _knowledgeBase.Rules[_itemDnD.Index];
-            _knowledgeBase.Rules.RemoveAt(_itemDnD.Index);
+            var r = _knowledgeBase.Rules[_dropped.Index];
+            _knowledgeBase.Rules.RemoveAt(_dropped.Index);
             _knowledgeBase.Rules.Insert(itemOver.Index, r);
-            lvRules.Items.Remove(_itemDnD);
-            lvRules.Items.Insert(itemOver.Index, _itemDnD);
+            lvRules.Items.Remove(_dropped);
+            lvRules.Items.Insert(itemOver.Index, _dropped);
             
             Cursor = Cursors.Default;
             _knowledgeBase.IsChanged = true;
@@ -383,36 +383,36 @@ namespace ES
 
         private void listViewRules_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_itemDnD == null) return;
+            if (_dropped == null) return;
             Cursor = Cursors.Hand;
         }
 
         private void listViewVars_MouseDown(object sender, MouseEventArgs e)
         {
-            _itemDnD = lvVars.GetItemAt(e.X, e.Y);
+            _dropped = lvVars.GetItemAt(e.X, e.Y);
         }
 
         private void listViewVars_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_itemDnD == null) return;
+            if (_dropped == null) return;
             Cursor = Cursors.Hand;
         }
 
         private void listViewVars_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_itemDnD == null) return;
+            if (_dropped == null) return;
             var itemOver = lvVars.GetItemAt(0, e.Y);
 
-            if (itemOver == null || itemOver == _itemDnD)
+            if (itemOver == null || itemOver == _dropped)
             {
                 Cursor = Cursors.Default;
                 return;
             }
-            var r = _knowledgeBase.Vars[_itemDnD.Index];
-            _knowledgeBase.Vars.RemoveAt(_itemDnD.Index);
+            var r = _knowledgeBase.Vars[_dropped.Index];
+            _knowledgeBase.Vars.RemoveAt(_dropped.Index);
             _knowledgeBase.Vars.Insert(itemOver.Index, r);
-            lvVars.Items.Remove(_itemDnD);
-            lvVars.Items.Insert(itemOver.Index, _itemDnD);
+            lvVars.Items.Remove(_dropped);
+            lvVars.Items.Insert(itemOver.Index, _dropped);
       
             Cursor = Cursors.Default;
             _knowledgeBase.IsChanged = true;
@@ -454,7 +454,7 @@ namespace ES
             var goals = _knowledgeBase.GetGoals();
             if (goals.Count == 0)
             {
-                MessageBox.Show("There are no deducted or query-deducted variables");
+                MessageBox.Show("There are no deducted or query-deducted variables", "Error");
                 return;
             }
             inferenceEngine = new InferenceEngine(_knowledgeBase);
@@ -463,7 +463,7 @@ namespace ES
             var result = inferenceEngine.Start();
             if (result == null)
             {
-                MessageBox.Show("Failed to deduce goal");
+                MessageBox.Show("Failed to deduce goal", "Error");
                 return;
             }
             var formResult = new FormResultConsult(inferenceEngine, result.ToString());

@@ -33,12 +33,7 @@ namespace ES.Models
             return new Rule(Name, Condition, Conclusion, Reason);
         }
 
-        public override string ToString()
-        {
-            var r = "ЕСЛИ " +  PrintPremise();
-            r += " ТОГДА " + PrintConclusion();
-            return r;
-        }
+        public override string ToString() => $"IF {PrintPremise()} THEN {PrintConclusion()}";
 
         public bool AddPremiseFact(Statement f)
         {
@@ -104,7 +99,7 @@ namespace ES.Models
             {
                 r += Condition[i].ToString();
                 if (i < Condition.Count - 1)
-                    r += " И ";
+                    r += " AND ";
             }
             return r;
         }
@@ -116,14 +111,14 @@ namespace ES.Models
             {
                 r += Conclusion[i].ToString();
                 if (i < Conclusion.Count - 1)
-                    r += " И ";
+                    r += " AND ";
             }
             return r;
         }
 
         private void FactAlreadyExistsError()
         {
-            MessageBox.Show("Факт с этой переменной уже существует в правиле");
+            MessageBox.Show("This variable already used in the rule", "Error");
         }
     }
 }

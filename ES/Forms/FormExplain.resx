@@ -120,10 +120,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btOk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAB+SURBVEhLYxgFo4BUoAGlaQK8gfgHEHeAeVQGMMP/A3E9SICagKaGBwHxLyAeQYazAvEqII4A
-        87ADilweDsQgjSADQAahA2TDG0AC5IByIAYZ8AeIkX1C1TBHt4SqhsMAKAhABoIMpjhYcAGYT6jqcnQA
-        cjXVXT4Khg1gYAAAhmotIFjHHYUAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAH5JREFUSEtj
+        GAWjgFSgAaVpAryB+AcQd4B5VAYww/8DcT1IgJqApoYHAfEvIB5BhrMC8SogjgDzsAOKXB4OxCCNIANA
+        BqEDZMMbQALkgHIgBhnwB4iRfULVMEe3hKqGwwAoCEAGggymOFhwAZhPqOpydAByNdVdPgqGDWBgAACG
+        ai0gWMcdhQAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

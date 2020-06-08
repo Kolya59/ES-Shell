@@ -113,18 +113,18 @@ namespace ES.Forms
             else
             {
                 _customQuestionText = false;
-                tbQuestion.Text = tbVarName.Text + "?";
+                tbQuestion.Text = $"{tbVarName.Text}?";
             }
         }
 
         private static void EmptyVarName()
         {
-            MessageBox.Show("Empty name");
+            MessageBox.Show("Empty name", "Error");
         }
 
         private static void NoDomainError()
         {
-            MessageBox.Show("Domain not chosen");
+            MessageBox.Show("Domain not chosen", "Error");
         }
 
         private void rbDeducted_CheckedChanged(object sender, EventArgs e)

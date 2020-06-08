@@ -29,11 +29,6 @@ namespace ES.Models
              Values.RemoveAt(index);
             return true;
         }
-        public bool ChangeValueOrder(int newOrder, string value)
-        {
-            var x = GetValue(value);
-            return x != null;
-        }
 
         public bool EditValue(int indexValue, string newValue)
         {

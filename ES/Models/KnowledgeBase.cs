@@ -28,7 +28,7 @@ namespace ES.Models
         {
             if(Domains.Exists(x => x.Name == domain.Name))
             {
-                AlreadyExistsError("Домен");
+                AlreadyExistsError("Domain");
                 return false;
             }
             if(domain.Values.Count == 0)
@@ -47,7 +47,7 @@ namespace ES.Models
             if(Domains.Find(x => x.Name == domain.Name) != null && 
                Domains.FindIndex(x => x.Name == domain.Name) != indexDomain)
             {
-                AlreadyExistsError("Домен");
+                AlreadyExistsError("Domain");
                 return false;
             }
             if (domain.Values.Count == 0)
@@ -93,7 +93,7 @@ namespace ES.Models
         {
             if (Vars.Exists(x => x.Name == var.Name))
             {
-                AlreadyExistsError("Переменная");
+                AlreadyExistsError("Variable");
                 return false;
             }
             if (var.Domain == null)
@@ -111,7 +111,7 @@ namespace ES.Models
             if (Vars.Find(x => x.Name == var.Name) != null &&
                 Vars.FindIndex(x => x.Name == var.Name) != indexVar)
             {
-                AlreadyExistsError("Переменная");
+                AlreadyExistsError("Variable");
                 return false;
             }
             if (var.Domain == null)
@@ -160,7 +160,7 @@ namespace ES.Models
         {
             if (Rules.Exists(x => x.Name == var.Name))
             {
-                AlreadyExistsError("Правило");
+                AlreadyExistsError("Rule");
                 return false;
             }
        
@@ -175,7 +175,7 @@ namespace ES.Models
             if (Rules.Find(x => x.Name == rule.Name) != null &&
                 Rules.FindIndex(x => x.Name == rule.Name) != indexVar)
             {
-                AlreadyExistsError("Правило");
+                AlreadyExistsError("Rule");
                 return false;
             }
             Rules[indexVar] = rule;
@@ -195,12 +195,12 @@ namespace ES.Models
 
         private void AlreadyExistsError(string obj)
         {
-            MessageBox.Show($@"{obj} с таким именем уже существует");
+            MessageBox.Show($@"{obj} with same name already exists", "Error");
         }
 
         private void DomainCantBeEmptyError()
         {
-            MessageBox.Show("Множество значений домена не может быть пустым");
+            MessageBox.Show("Domain should not be empty");
         }
 
         #endregion

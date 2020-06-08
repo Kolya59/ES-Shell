@@ -9,7 +9,7 @@ namespace ES.Models
         public bool Asked { get; }
         public List <ExplainNode> SubGoals { get; }
 
-        //значение было запрошено у пользователя
+        // Value was asked
         public ExplainNode(Statement goal)
         {
             SubGoals = new List<ExplainNode>();
@@ -17,7 +17,7 @@ namespace ES.Models
             Goal = goal;
         }
 
-        //значение было получено при срабатывании правила
+        // Value was deducted
         public ExplainNode(Statement goal, Rule firedRule)
         {
             Asked = false;

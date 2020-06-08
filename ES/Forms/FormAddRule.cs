@@ -47,7 +47,6 @@ namespace ES.Forms
                 Modes.edit => "Rule editing",
                 _ => Text
             };
-            BackColor = SystemColors.ControlLightLight;
             btEditPremise.Enabled = false; 
             btDeletePremise.Enabled = false;
             btEditConclusion.Enabled = false;
@@ -137,17 +136,17 @@ namespace ES.Forms
 
         private static void EmptyName()
         {
-            MessageBox.Show("Empty rule name");
+            MessageBox.Show("Empty rule name", "Error");
         }
         
         private static void EmptyPremise()
         {
-            MessageBox.Show("Empty condition");
+            MessageBox.Show("Empty condition", "Error");
         }
 
         private static void EmptyConclusion()
         {
-            MessageBox.Show("Empty conclusion");
+            MessageBox.Show("Empty conclusion", "Error");
         }
 
         private void btOk_Click(object sender, EventArgs e)

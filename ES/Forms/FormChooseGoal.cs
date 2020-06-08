@@ -28,7 +28,7 @@ namespace ES.Forms
                 Close();
             } else
             {
-                MessageBox.Show("Choose consultation goal");
+                MessageBox.Show("Choose consultation goal", "Error");
             }
         }
     }

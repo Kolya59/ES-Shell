@@ -98,14 +98,9 @@ namespace ES.Forms
             comboBoxDomain.SelectedIndex = 0;
         }
 
-        private void NotSelectedError()
+        private static void NotSelectedError()
         {
-            MessageBox.Show("Выберите переменную и ее значение");
-        }
-
-        private void cancelButton1_Click(object sender, EventArgs e)
-        {
-            Close();
+            MessageBox.Show("Variable is not selected", "Error");
         }
 
         private void btOk_Click(object sender, EventArgs e)
