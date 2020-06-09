@@ -16,31 +16,27 @@ namespace ES.Forms
             tbQuestion.Text = statement.Variable.Question;
             tbQuestion.ReadOnly = true;
 
-            for (var i=0; i < statement.Variable.Domain.Values.Count; i++)
+            for (var i = 0; i < statement.Variable.Domain.Values.Count; i++)
             {
                 var value = statement.Variable.Domain.Values[i];
-                var rb = new RadioButton
+                var bt = new Button
                 {
-                    Text = value.Value, Tag = i, AutoSize = true, Location = new Point(10, 20 + i * 30)
+                    Text = value.Value, Tag = i, Width = Width - 50, Location = new Point(10, 20 + i * 30)
                 };
 
-                gbAnswers.Controls.Add(rb);
+                bt.Click += btChosen_Click;
+
+                gbAnswers.Controls.Add(bt);
             }
-            ((RadioButton)gbAnswers.Controls[0]).Checked = true;
             gbAnswers.Height = 20 + 30 * statement.Variable.Domain.Values.Count;
-            Height = gbAnswers.Height + 210;
-            btOk.Location = new Point(btOk.Location.X, Height - 80);
+            Height = gbAnswers.Height + 170;
         }
 
-        private void okButton_Click(object sender, EventArgs e)
+        private void btChosen_Click(object sender, EventArgs e)
         {
-            foreach(RadioButton rb in gbAnswers.Controls)
-            {
-                if (!rb.Checked) continue;
-                _statement.Value = rb.Text;
-                DialogResult = DialogResult.OK;
-                Close();
-            }
+            _statement.Value = ((Button) sender).Text;
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

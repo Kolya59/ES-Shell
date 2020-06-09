@@ -30,11 +30,9 @@ namespace ES.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAsk));
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tbQuestion = new System.Windows.Forms.TextBox();
             this.gbAnswers = new System.Windows.Forms.GroupBox();
-            this.btOk = new System.Windows.Forms.Button();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +65,7 @@ namespace ES.Forms
             // 
             // gbAnswers
             // 
+            this.gbAnswers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbAnswers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.gbAnswers.Location = new System.Drawing.Point(9, 118);
             this.gbAnswers.Margin = new System.Windows.Forms.Padding(2);
@@ -77,28 +76,12 @@ namespace ES.Forms
             this.gbAnswers.TabStop = false;
             this.gbAnswers.Text = "Choose right one";
             // 
-            // btOk
-            // 
-            this.btOk.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (0)))));
-            this.btOk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int) (((byte) (132)))), ((int) (((byte) (225)))), ((int) (((byte) (132)))));
-            this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btOk.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btOk.Image = ((System.Drawing.Image) (resources.GetObject("btOk.Image")));
-            this.btOk.Location = new System.Drawing.Point(9, 268);
-            this.btOk.Margin = new System.Windows.Forms.Padding(2);
-            this.btOk.Name = "btOk";
-            this.btOk.Size = new System.Drawing.Size(310, 33);
-            this.btOk.TabIndex = 5;
-            this.btOk.UseVisualStyleBackColor = false;
-            this.btOk.Click += new System.EventHandler(this.okButton_Click);
-            // 
             // FormAsk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(328, 308);
-            this.Controls.Add(this.btOk);
+            this.ClientSize = new System.Drawing.Size(328, 270);
             this.Controls.Add(this.gbAnswers);
             this.Controls.Add(this.groupBox5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -109,7 +92,6 @@ namespace ES.Forms
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button btOk;
         private System.Windows.Forms.GroupBox gbAnswers;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox tbQuestion;

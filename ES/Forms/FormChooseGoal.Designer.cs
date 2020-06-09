@@ -78,11 +78,14 @@ namespace ES.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(265, 140);
+            this.ClientSize = new System.Drawing.Size(275, 150);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.cbGoals);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(281, 179);
+            this.MinimumSize = new System.Drawing.Size(281, 179);
             this.Name = "ChooseGoalForm";
             this.Text = "Consultation";
             this.ResumeLayout(false);
