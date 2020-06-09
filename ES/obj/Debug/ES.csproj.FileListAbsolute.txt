@@ -29,10 +29,10 @@ C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\bin\Debug\System.V
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.exe.config
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.csproj.CopyComplete
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.ChooseGoalForm.resources
-C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormAddDomain.resources
-C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormAddRule.resources
-C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormAddVar.resources
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormAsk.resources
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormExplain.resources
 C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormResultConsult.resources
-C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormAddStatement.resources
+C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormDomain.resources
+C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormStatement.resources
+C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormRule.resources
+C:\Users\User\OneDrive\Документы\RiderProjects\ES\ES\obj\Debug\ES.Forms.FormVar.resources

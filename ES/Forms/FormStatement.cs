@@ -4,7 +4,7 @@ using ES.Models;
 
 namespace ES.Forms
 {
-    public partial class FormAddStatement : Form
+    public partial class FormStatement : Form
     {
         public enum Modes { add, edit }
 
@@ -16,7 +16,7 @@ namespace ES.Forms
 
         private readonly int _factIndex;
         // Add Statement 
-        public FormAddStatement(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule)
+        public FormStatement(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule)
         {
             InitializeComponent();
             _mode = mode;
@@ -29,7 +29,7 @@ namespace ES.Forms
         }
 
         // Edit statement
-        public FormAddStatement(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule, int factIndex)
+        public FormStatement(Modes mode, FactType factType, KnowledgeBase kBase, Rule rule, int factIndex)
         {
             InitializeComponent();
             _mode = mode;
@@ -81,7 +81,7 @@ namespace ES.Forms
 
         private void addPlusVarButton_Click(object sender, EventArgs e)
         {
-            var f = new FormAddVar(FormAddVar.Modes.add, _kBase);
+            var f = new FormVar(FormVar.Modes.add, _kBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillListVar();
             comboBoxVar.SelectedIndex = 0;

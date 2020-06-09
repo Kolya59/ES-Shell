@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ES.Forms
 {
-    partial class FormAddRule
+    partial class FormRule
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ES.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddRule));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRule));
             this.tbRuleName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -280,7 +280,7 @@ namespace ES.Forms
             this.Controls.Add(this.tbRuleName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormAddRule";
+            this.Name = "FormRule";
             this.Text = "FormAddRule";
             this.groupBox6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

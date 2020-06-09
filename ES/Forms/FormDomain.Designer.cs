@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ES.Forms
 {
-    partial class FormAddDomain
+    partial class FormDomain
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ES.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddDomain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDomain));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxDomainValues = new System.Windows.Forms.ListBox();

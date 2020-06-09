@@ -120,7 +120,7 @@ namespace ES
             this.menuStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(784, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 27);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,7 +129,7 @@ namespace ES
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.menuFile_New, this.menuFile_Open, this.menuFile_Save, this.menuFile_SaveAs});
             this.menuFile.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(43, 24);
+            this.menuFile.Size = new System.Drawing.Size(43, 23);
             this.menuFile.Text = "Main";
             // 
             // menuFile_New
@@ -164,7 +164,7 @@ namespace ES
             // 
             this.menuConsultation.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.menuConsultation.Name = "menuConsultation";
-            this.menuConsultation.Size = new System.Drawing.Size(86, 24);
+            this.menuConsultation.Size = new System.Drawing.Size(86, 23);
             this.menuConsultation.Text = "Consultation";
             this.menuConsultation.Click += new System.EventHandler(this.menuConsultation_Click);
             // 
@@ -172,7 +172,7 @@ namespace ES
             // 
             this.menuExplanation.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.menuExplanation.Name = "menuExplanation";
-            this.menuExplanation.Size = new System.Drawing.Size(81, 24);
+            this.menuExplanation.Size = new System.Drawing.Size(81, 23);
             this.menuExplanation.Text = "Explanation";
             this.menuExplanation.Click += new System.EventHandler(this.menuExplanation_Click);
             // 
@@ -185,7 +185,7 @@ namespace ES
             this.cbGoal.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbGoal.Name = "cbGoal";
             this.cbGoal.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
-            this.cbGoal.Size = new System.Drawing.Size(0, 24);
+            this.cbGoal.Size = new System.Drawing.Size(0, 23);
             this.cbGoal.SelectedIndexChanged += new System.EventHandler(this.cbGoal_SelectedIndexChanged);
             // 
             // goalToolStripMenuItem
@@ -195,7 +195,7 @@ namespace ES
             this.goalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.goalToolStripMenuItem.Enabled = false;
             this.goalToolStripMenuItem.Name = "goalToolStripMenuItem";
-            this.goalToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
+            this.goalToolStripMenuItem.Size = new System.Drawing.Size(43, 23);
             this.goalToolStripMenuItem.Text = "Goal";
             // 
             // tabControl
@@ -205,12 +205,12 @@ namespace ES
             this.tabControl.Controls.Add(this.tpDomains);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.tabControl.Location = new System.Drawing.Point(0, 28);
+            this.tabControl.Location = new System.Drawing.Point(0, 27);
             this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(15, 5);
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(784, 533);
+            this.tabControl.Size = new System.Drawing.Size(784, 534);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
@@ -222,7 +222,7 @@ namespace ES
             this.tpRules.Margin = new System.Windows.Forms.Padding(2);
             this.tpRules.Name = "tpRules";
             this.tpRules.Padding = new System.Windows.Forms.Padding(2);
-            this.tpRules.Size = new System.Drawing.Size(776, 503);
+            this.tpRules.Size = new System.Drawing.Size(776, 504);
             this.tpRules.TabIndex = 0;
             this.tpRules.Text = "Rules";
             this.tpRules.UseVisualStyleBackColor = true;
@@ -244,7 +244,7 @@ namespace ES
             this.splitContainerRules.Panel2.Controls.Add(this.gbConclusion);
             this.splitContainerRules.Panel2.Controls.Add(this.gbActions);
             this.splitContainerRules.Panel2.Controls.Add(this.gbCondition);
-            this.splitContainerRules.Size = new System.Drawing.Size(772, 499);
+            this.splitContainerRules.Size = new System.Drawing.Size(772, 500);
             this.splitContainerRules.SplitterDistance = 557;
             this.splitContainerRules.SplitterWidth = 3;
             this.splitContainerRules.TabIndex = 0;
@@ -262,7 +262,7 @@ namespace ES
             this.lvRules.Margin = new System.Windows.Forms.Padding(2);
             this.lvRules.MultiSelect = false;
             this.lvRules.Name = "lvRules";
-            this.lvRules.Size = new System.Drawing.Size(557, 499);
+            this.lvRules.Size = new System.Drawing.Size(557, 500);
             this.lvRules.TabIndex = 0;
             this.lvRules.UseCompatibleStateImageBehavior = false;
             this.lvRules.View = System.Windows.Forms.View.Details;
@@ -405,7 +405,7 @@ namespace ES
             this.tpVariables.Margin = new System.Windows.Forms.Padding(2);
             this.tpVariables.Name = "tpVariables";
             this.tpVariables.Padding = new System.Windows.Forms.Padding(2);
-            this.tpVariables.Size = new System.Drawing.Size(776, 504);
+            this.tpVariables.Size = new System.Drawing.Size(776, 503);
             this.tpVariables.TabIndex = 1;
             this.tpVariables.Text = "Variables";
             this.tpVariables.UseVisualStyleBackColor = true;
@@ -427,7 +427,7 @@ namespace ES
             this.splitContainerVars.Panel2.Controls.Add(this.gbDomainValues);
             this.splitContainerVars.Panel2.Controls.Add(this.gbQuestion);
             this.splitContainerVars.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainerVars.Size = new System.Drawing.Size(772, 500);
+            this.splitContainerVars.Size = new System.Drawing.Size(772, 499);
             this.splitContainerVars.SplitterDistance = 562;
             this.splitContainerVars.SplitterWidth = 3;
             this.splitContainerVars.TabIndex = 0;
@@ -444,7 +444,7 @@ namespace ES
             this.lvVars.Margin = new System.Windows.Forms.Padding(2);
             this.lvVars.MultiSelect = false;
             this.lvVars.Name = "lvVars";
-            this.lvVars.Size = new System.Drawing.Size(562, 500);
+            this.lvVars.Size = new System.Drawing.Size(562, 499);
             this.lvVars.TabIndex = 0;
             this.lvVars.UseCompatibleStateImageBehavior = false;
             this.lvVars.View = System.Windows.Forms.View.Details;
@@ -584,7 +584,7 @@ namespace ES
             this.tpDomains.Location = new System.Drawing.Point(4, 26);
             this.tpDomains.Margin = new System.Windows.Forms.Padding(2);
             this.tpDomains.Name = "tpDomains";
-            this.tpDomains.Size = new System.Drawing.Size(776, 504);
+            this.tpDomains.Size = new System.Drawing.Size(776, 503);
             this.tpDomains.TabIndex = 2;
             this.tpDomains.Text = "Domains";
             this.tpDomains.UseVisualStyleBackColor = true;
@@ -605,7 +605,7 @@ namespace ES
             this.splitContainerDomains.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainerDomains.Panel2.Controls.Add(this.groupBox4);
             this.splitContainerDomains.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainerDomains.Size = new System.Drawing.Size(776, 504);
+            this.splitContainerDomains.Size = new System.Drawing.Size(776, 503);
             this.splitContainerDomains.SplitterDistance = 574;
             this.splitContainerDomains.SplitterWidth = 3;
             this.splitContainerDomains.TabIndex = 0;
@@ -622,7 +622,7 @@ namespace ES
             this.lvDomains.Margin = new System.Windows.Forms.Padding(2);
             this.lvDomains.MultiSelect = false;
             this.lvDomains.Name = "lvDomains";
-            this.lvDomains.Size = new System.Drawing.Size(574, 504);
+            this.lvDomains.Size = new System.Drawing.Size(574, 503);
             this.lvDomains.TabIndex = 0;
             this.lvDomains.UseCompatibleStateImageBehavior = false;
             this.lvDomains.View = System.Windows.Forms.View.Details;

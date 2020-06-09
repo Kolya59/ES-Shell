@@ -5,7 +5,7 @@ using ES.Models;
 
 namespace ES.Forms
 {
-    public partial class FormAddVar : Form
+    public partial class FormVar : Form
     {
         public enum Modes { add, edit}
 
@@ -15,7 +15,7 @@ namespace ES.Forms
         private readonly int _indexVar;
         private bool _customQuestionText;
 
-        public FormAddVar(Modes mode, KnowledgeBase kBase)
+        public FormVar(Modes mode, KnowledgeBase kBase)
         {
             InitializeComponent();
             _mode = mode;
@@ -27,7 +27,7 @@ namespace ES.Forms
             tbVarName.Text = $@"Var {kBase.Vars.Count}";
         }
 
-        public FormAddVar(Modes mode, KnowledgeBase kBase, int indexVar)
+        public FormVar(Modes mode, KnowledgeBase kBase, int indexVar)
         {
             InitializeComponent();
             _mode = mode;
@@ -100,7 +100,7 @@ namespace ES.Forms
         }
         private void addPlusButton_Click(object sender, EventArgs e)
         {
-            var f = new FormAddDomain(_kBase.LastDomainNumber - 1, FormAddDomain.Modes.add, _kBase);
+            var f = new FormDomain(_kBase.LastDomainNumber - 1, FormDomain.Modes.add, _kBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             comboBoxDomain.SelectedIndex = comboBoxDomain.Items.Count - 1;

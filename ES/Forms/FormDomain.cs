@@ -4,7 +4,7 @@ using ES.Models;
 
 namespace ES.Forms
 {
-    public partial class FormAddDomain : Form
+    public partial class FormDomain : Form
     {
         public enum Modes { add, edit}
 
@@ -15,7 +15,7 @@ namespace ES.Forms
         private readonly int _insertAfterIdx;
         
         // Add domain
-        public FormAddDomain(int insertAfterIdx, Modes mode, KnowledgeBase kBase)
+        public FormDomain(int insertAfterIdx, Modes mode, KnowledgeBase kBase)
         {
             InitializeComponent();       
             _mode = mode;
@@ -28,7 +28,7 @@ namespace ES.Forms
         }
 
         // Edit domain
-        public FormAddDomain(Modes mode, KnowledgeBase kBase, int domainIndex)
+        public FormDomain(Modes mode, KnowledgeBase kBase, int domainIndex)
         {
             InitializeComponent();
             _mode = mode;

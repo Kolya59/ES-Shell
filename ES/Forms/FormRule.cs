@@ -4,7 +4,7 @@ using ES.Models;
 
 namespace ES.Forms
 {
-    public partial class FormAddRule : Form
+    public partial class FormRule : Form
     {
         public enum Modes { add, edit }
 
@@ -15,7 +15,7 @@ namespace ES.Forms
 
         private readonly int _insertAfterIdx;
         // Add rule
-        public FormAddRule(int insertAfterIdx, Modes mode, KnowledgeBase kBase)
+        public FormRule(int insertAfterIdx, Modes mode, KnowledgeBase kBase)
         {
             InitializeComponent();
             _mode = mode;
@@ -27,7 +27,7 @@ namespace ES.Forms
         }
 
         // Edit Rule
-        public FormAddRule(Modes mode, KnowledgeBase kBase, int ruleIndex)
+        public FormRule(Modes mode, KnowledgeBase kBase, int ruleIndex)
         {
             InitializeComponent();
             _mode = mode;
@@ -76,7 +76,7 @@ namespace ES.Forms
 
         private void buttonAddPremise_Click(object sender, EventArgs e)
         {
-            var f = new FormAddStatement(FormAddStatement.Modes.add, FactType.premise, _kBase, _rule);
+            var f = new FormStatement(FormStatement.Modes.add, FactType.premise, _kBase, _rule);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             lbPremises.SelectedIndex = lbPremises.Items.Count  - 1;
@@ -84,7 +84,7 @@ namespace ES.Forms
         
         private void buttonAddConclusion_Click(object sender, EventArgs e)
         {
-            var f = new FormAddStatement(FormAddStatement.Modes.add, FactType.conclusion, _kBase, _rule);
+            var f = new FormStatement(FormStatement.Modes.add, FactType.conclusion, _kBase, _rule);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             lbConclusion.SelectedIndex = lbConclusion.Items.Count - 1;
@@ -104,7 +104,7 @@ namespace ES.Forms
 
         private void buttonEditPremise_Click(object sender, EventArgs e)
         {
-            var f = new FormAddStatement(FormAddStatement.Modes.edit, FactType.premise, _kBase, _rule, lbPremises.SelectedIndex);
+            var f = new FormStatement(FormStatement.Modes.edit, FactType.premise, _kBase, _rule, lbPremises.SelectedIndex);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             lbPremises.SelectedIndex = lbPremises.Items.Count - 1;
@@ -113,7 +113,7 @@ namespace ES.Forms
 
         private void buttonEditConclusion_Click(object sender, EventArgs e)
         {
-            var f = new FormAddStatement(FormAddStatement.Modes.edit, FactType.conclusion, _kBase, _rule, lbPremises.SelectedIndex);
+            var f = new FormStatement(FormStatement.Modes.edit, FactType.conclusion, _kBase, _rule, lbPremises.SelectedIndex);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             lbConclusion.SelectedIndex = lbConclusion.Items.Count - 1;

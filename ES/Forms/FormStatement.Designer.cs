@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ES.Forms
 {
-    partial class FormAddStatement
+    partial class FormStatement
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ES.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddStatement));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStatement));
             this.comboBoxVar = new System.Windows.Forms.ComboBox();
             this.btAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -131,7 +131,7 @@ namespace ES.Forms
             this.Controls.Add(this.comboBoxVar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormAddStatement";
+            this.Name = "FormStatement";
             this.Text = "FormAddFact";
             this.ResumeLayout(false);
             this.PerformLayout();

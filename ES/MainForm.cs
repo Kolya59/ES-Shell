@@ -172,7 +172,7 @@ namespace ES
         private void buttonAddDomain_Click(object sender, EventArgs e)
         {
             var idx = lvDomains.SelectedIndices.Count > 0 ? lvDomains.SelectedIndices[0] : _knowledgeBase.Domains.Count - 1;
-            var f = new FormAddDomain(idx, FormAddDomain.Modes.add, _knowledgeBase);
+            var f = new FormDomain(idx, FormDomain.Modes.add, _knowledgeBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillDomains();
             _kBaseChanged = true;
@@ -182,7 +182,7 @@ namespace ES
         private void buttonEditDomain_Click(object sender, EventArgs e)
         {
             var index = lvDomains.SelectedIndices[0];
-            var f = new FormAddDomain(FormAddDomain.Modes.edit, _knowledgeBase, index);
+            var f = new FormDomain(FormDomain.Modes.edit, _knowledgeBase, index);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillDomains();
             lvDomains.SelectedIndices.Clear();
@@ -234,10 +234,10 @@ namespace ES
         private void buttonAddVar_Click(object sender, EventArgs e)
         {
             var f = lvVars.SelectedIndices.Count != 0
-                ? new FormAddVar(FormAddVar.Modes.add,
+                ? new FormVar(FormVar.Modes.add,
                     _knowledgeBase,
                     lvVars.SelectedIndices[0] + 1)
-                : new FormAddVar(FormAddVar.Modes.add,
+                : new FormVar(FormVar.Modes.add,
                     _knowledgeBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillVars();
@@ -255,7 +255,7 @@ namespace ES
                 return;
             }
             var index = lvVars.SelectedIndices[0];
-            var f = new FormAddVar(FormAddVar.Modes.edit, _knowledgeBase, index);
+            var f = new FormVar(FormVar.Modes.edit, _knowledgeBase, index);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillVars();
             FillDomains();
@@ -312,8 +312,8 @@ namespace ES
         #region Rules
         private void buttonAddRule_Click(object sender, EventArgs e)
         {
-            var insertAfter = lvRules.SelectedIndices.Count > 0 ? lvRules.SelectedIndices[0]: 0;
-            var f = new FormAddRule(insertAfter, FormAddRule.Modes.add, _knowledgeBase);
+            var insertAfter = lvRules.SelectedIndices.Count > 0 ? lvRules.SelectedIndices[0] + 1: _knowledgeBase.Rules.Count;
+            var f = new FormRule(insertAfter, FormRule.Modes.add, _knowledgeBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillRules();
             FillVars();
@@ -326,7 +326,7 @@ namespace ES
         private void buttonEditRule_Click(object sender, EventArgs e)
         {
             var index = lvRules.SelectedIndices[0];
-            var f = new FormAddRule(FormAddRule.Modes.edit, _knowledgeBase, index);
+            var f = new FormRule(FormRule.Modes.edit, _knowledgeBase, index);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillRules();
             FillVars();

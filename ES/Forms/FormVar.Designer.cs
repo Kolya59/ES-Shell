@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ES.Forms
 {
-    partial class FormAddVar
+    partial class FormVar
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ES.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddVar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVar));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxDomain = new System.Windows.Forms.ComboBox();
@@ -226,7 +226,7 @@ namespace ES.Forms
             this.Controls.Add(this.tbVarName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormAddVar";
+            this.Name = "FormVar";
             this.Text = "FormAddVar";
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
