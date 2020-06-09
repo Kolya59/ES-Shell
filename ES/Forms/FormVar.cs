@@ -57,7 +57,6 @@ namespace ES.Forms
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            BackColor = SystemColors.ControlLightLight;
             CenterToScreen();
         }
 

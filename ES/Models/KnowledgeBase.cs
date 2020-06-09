@@ -152,9 +152,7 @@ namespace ES.Models
             }
             return !notUsed;
         }
-
-        public List<Variable> GetGoals() => Vars.Where(v => v.Type != VariableType.queried).ToList();
-
+        
         #endregion
 
         #region Rules

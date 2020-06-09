@@ -10,8 +10,8 @@ namespace ES.Models
         public string Name { get; set; }
         public List<Statement> Condition { get; set; }
         public List<Statement> Conclusion { get; set; }
-        public string Reason { get; set; }
-        public Rule(string name, IEnumerable<Statement> conditions, IEnumerable<Statement> conclusions, string reason)
+        public string Description { get; set; }
+        public Rule(string name, IEnumerable<Statement> conditions, IEnumerable<Statement> conclusions, string description)
         {
             Condition = new List<Statement>();
             foreach (var f in conditions)
@@ -25,7 +25,7 @@ namespace ES.Models
                 Conclusion.Add(f);
             }
 
-            Reason = reason;
+            Description = description;
             Name = name;
         }
 
@@ -36,11 +36,9 @@ namespace ES.Models
         }
         public Rule Copy()
         {
-            return new Rule(Name, Condition, Conclusion, Reason);
+            return new Rule(Name, Condition, Conclusion, Description);
         }
-
-        public override string ToString() => $"IF {PrintCondition()} THEN {PrintConclusion()}";
-
+        
         public bool AddPremiseFact(Statement f)
         {
             if (Condition.Exists(x => x.Variable == f.Variable))

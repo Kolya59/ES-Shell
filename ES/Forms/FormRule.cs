@@ -57,7 +57,7 @@ namespace ES.Forms
         {
             tbRuleName.Text = _rule.Name;
             FillList();
-            tbReason.Text = _rule.Reason;
+            tbReason.Text = _rule.Description;
         }
 
         private void FillList()
@@ -168,7 +168,7 @@ namespace ES.Forms
                 return;
             }
             _rule.Name = tbRuleName.Text;
-            _rule.Reason = tbReason.Text;
+            _rule.Description = tbReason.Text;
             if (_mode == Modes.add)
             {
                 if (!_kBase.AddRule(_insertAfterIdx, _rule))

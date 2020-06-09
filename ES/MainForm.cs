@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
 using ES.Forms;
@@ -15,6 +16,7 @@ namespace ES
 
         private bool _kBaseChanged;
         private string _fileName;
+        private Variable _goal;
         
         public MainForm()
         {
@@ -57,6 +59,9 @@ namespace ES
                 _knowledgeBase = new KnowledgeBase();
                 _kBaseChanged = false;
             }
+
+            Text = @$"ES {_fileName}";
+            cbGoal.Width = 230;
         }
 
         public sealed override Color BackColor
@@ -94,6 +99,7 @@ namespace ES
             if (dialog.ShowDialog() != DialogResult.OK) return;
             _fileName = $@"{dialog.FileName}";
             Save();
+            Text = @$"ES {_fileName}";
         }
 
         #region Fill Form
@@ -102,6 +108,7 @@ namespace ES
             lvDomains.Items.Clear();
             foreach (var d in _knowledgeBase.Domains)
                 lvDomains.Items.Add(new ListViewItem(d.Name));
+            CheckDomainControls();
         }
         private void FillVars()
         {
@@ -127,6 +134,23 @@ namespace ES
                 item.SubItems.Add(v.Type.ToString());
                 lvVars.Items.Add(item);
             }
+
+            cbGoal.Items.Clear();
+            foreach (var variable in _knowledgeBase.Vars.Where(v => v.Type != VariableType.queried))
+            {
+                cbGoal.Items.Add(variable.Name);
+            }
+
+            if (_knowledgeBase.Vars.Exists(v => v == _goal))
+            {
+                cbGoal.Select(_knowledgeBase.Vars.FindIndex(v => v == _goal), 0);
+            }
+            else
+            {
+                cbGoal.SelectedIndex = -1;
+                _goal = null;
+            }
+            CheckVariableControls();
         }
 
         private void FillRules()
@@ -135,9 +159,10 @@ namespace ES
             foreach(var r in _knowledgeBase.Rules)
             {
                 var item = new ListViewItem(r.Name);
-                item.SubItems.Add(r.ToString());
+                item.SubItems.Add(r.Description);
                 lvRules.Items.Add(item);
             }
+            CheckRuleControls();
         }
 
         #endregion
@@ -357,6 +382,8 @@ namespace ES
             FillRules();
             FillVars();
             _kBaseChanged = false;
+            _fileName = "";
+            Text = @$"ES {_fileName}";
         }
         #endregion
 
@@ -382,6 +409,7 @@ namespace ES
             {
                 reader.Close();
             }
+            Text = @$"ES {_fileName}";
         }
 
         private void menuFile_SaveAs_Click(object sender, EventArgs e) => SaveAs();
@@ -484,15 +512,19 @@ namespace ES
         
         private void menuConsultation_Click(object sender, EventArgs e)
         {
-            var goals = _knowledgeBase.GetGoals();
-            if (goals.Count == 0)
+            if (_knowledgeBase.Vars.Count == 0)
             {
-                MessageBox.Show("There are no deducted or query-deducted variables", "Error");
+                MessageBox.Show("There are no variables", "Error");
+                return;
+            }
+
+            if (_goal == null)
+            {
+                MessageBox.Show("Goal is not choosen", "Error");
                 return;
             }
             inferenceEngine = new InferenceEngine(_knowledgeBase);
-            var f = new ChooseGoalForm(goals);
-            if (f.ShowDialog() != DialogResult.OK) return;
+            inferenceEngine.SetPrimaryGoal(_goal);
             var result = inferenceEngine.Start();
             if (result == null)
             {
@@ -548,6 +580,11 @@ namespace ES
             }
             var f = new FormExplain(inferenceEngine.ExplainTree, inferenceEngine.log, inferenceEngine.WorkingMemory);
             f.ShowDialog();
+        }
+
+        private void cbGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _goal = _knowledgeBase.Vars.Find(v => v.Name == (string) ((ToolStripComboBox) sender).SelectedItem);
         }
     }
 }
