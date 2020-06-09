@@ -95,7 +95,7 @@ namespace ES.Forms
             var f = new FormAddDomain(_kBase.LastDomainNumber - 1, FormAddDomain.Modes.add, _kBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
-            comboBoxDomain.SelectedIndex = 0;
+            comboBoxDomain.SelectedIndex = comboBoxDomain.Items.Count - 1;
         }
         private void esTextBoxVarName_TextChanged(object sender, EventArgs e)
         {
@@ -159,7 +159,7 @@ namespace ES.Forms
             _var.Domain = _kBase.Domains[comboBoxDomain.SelectedIndex];
             if (_mode == Modes.add)
             {
-                if (!_kBase.AddVar(_indexVar, _var))
+                if (!_kBase.AddVar(_indexVar - 1, _var))
                     return;
             }
             else

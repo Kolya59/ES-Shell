@@ -59,8 +59,10 @@ namespace ES.Forms
         private void CheckControls()
         {
             buttonEditDomainValue.Enabled = listBoxDomainValues.Items.Count != 0 &&
-                                            (string) listBoxDomainValues.SelectedItems[0] != tbDomainValue.Text;
-            buttonDeleteDomainValue.Enabled = listBoxDomainValues.Items.Count != 0;
+                                            listBoxDomainValues.SelectedItems.Count != 0 &&
+                                            (string) listBoxDomainValues.SelectedItem != tbDomainValue.Text;
+            buttonDeleteDomainValue.Enabled = listBoxDomainValues.Items.Count != 0 &&
+                                              listBoxDomainValues.SelectedItems.Count != 0;
         }
         
         private void buttonAddDomainValue_Click(object sender, EventArgs e)

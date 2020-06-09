@@ -27,7 +27,7 @@ namespace ES
                 c.Width = lvDomains.Width;
             }
             lvVars.Columns[0].Width = (int)(lvVars.Width * 0.2);
-            lvVars.Columns[1].Width = (int)(lvVars.Width * 0.4);
+            lvVars.Columns[1].Width = (int)(lvVars.Width * 0.2);
             lvVars.Columns[2].Width = lvVars.Width - (lvVars.Columns[0].Width + lvVars.Columns[1].Width);
 
             try
@@ -506,6 +506,9 @@ namespace ES
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             SplittersConstruct();
+            FillVars();
+            FillDomains();
+            FillRules();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -535,7 +538,7 @@ namespace ES
             }
         }
 
-        private void menuReasoning_Click(object sender, EventArgs e)
+        private void menuExplanation_Click(object sender, EventArgs e)
         {
             // TODO: Check invalid goal
             if (inferenceEngine?.ExplainTree == null)
