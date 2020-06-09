@@ -12,7 +12,6 @@ namespace ES.Forms
         private readonly KnowledgeBase _kBase;
         private readonly Rule _rule;
         private readonly int _ruleIndex;
-
         private readonly int _insertAfterIdx;
         // Add rule
         public FormRule(int insertAfterIdx, Modes mode, KnowledgeBase kBase)
@@ -50,6 +49,10 @@ namespace ES.Forms
             btDeletePremise.Enabled = false;
             btEditConclusion.Enabled = false;
             btDeleteConclusion.Enabled = false;
+            btConditionUp.Enabled = false;
+            btConditionDown.Enabled = false;
+            btConclusionUp.Enabled = false;
+            btConclusionDown.Enabled = false;
             CenterToScreen();
         }
 
@@ -62,11 +65,11 @@ namespace ES.Forms
 
         private void FillList()
         {
-            lbPremises.Items.Clear();
+            lbConditions.Items.Clear();
             foreach (var p in _rule.Condition)
-                lbPremises.Items.Add(p.ToString());
-            if (lbPremises.Items.Count > 0)
-                lbPremises.SelectedIndex = 0;
+                lbConditions.Items.Add(p.ToString());
+            if (lbConditions.Items.Count > 0)
+                lbConditions.SelectedIndex = 0;
             lbConclusion.Items.Clear();
             foreach (var p in _rule.Conclusion)
                 lbConclusion.Items.Add(p.ToString());
@@ -79,7 +82,7 @@ namespace ES.Forms
             var f = new FormStatement(FormStatement.Modes.add, FactType.premise, _kBase, _rule);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
-            lbPremises.SelectedIndex = lbPremises.Items.Count  - 1;
+            lbConditions.SelectedIndex = lbConditions.Items.Count  - 1;
         }
         
         private void buttonAddConclusion_Click(object sender, EventArgs e)
@@ -92,28 +95,32 @@ namespace ES.Forms
 
         private void listBoxPremises_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btDeletePremise.Enabled = lbPremises.SelectedIndex >= 0;
-            btEditPremise.Enabled = lbPremises.SelectedIndex >= 0;
+            btDeletePremise.Enabled = lbConditions.SelectedIndex >= 0;
+            btEditPremise.Enabled = lbConditions.SelectedIndex >= 0;
+            btConditionUp.Enabled = lbConditions.SelectedIndex >= 1 && lbConditions.Items.Count > 1;
+            btConditionDown.Enabled = lbConditions.SelectedIndex < lbConditions.Items.Count - 1 && lbConditions.Items.Count > 1;
         }
 
         private void listBoxConclusion_SelectedIndexChanged(object sender, EventArgs e)
         {
             btDeleteConclusion.Enabled = lbConclusion.SelectedIndex >= 0;
             btEditConclusion.Enabled = lbConclusion.SelectedIndex >= 0;
+            btConclusionUp.Enabled = lbConclusion.SelectedIndex >= 1 && lbConclusion.Items.Count > 1;
+            btConclusionDown.Enabled = lbConclusion.SelectedIndex < lbConclusion.Items.Count - 1 && lbConclusion.Items.Count > 1;
         }
 
         private void buttonEditPremise_Click(object sender, EventArgs e)
         {
-            var f = new FormStatement(FormStatement.Modes.edit, FactType.premise, _kBase, _rule, lbPremises.SelectedIndex);
+            var f = new FormStatement(FormStatement.Modes.edit, FactType.premise, _kBase, _rule, lbConditions.SelectedIndex);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
-            lbPremises.SelectedIndex = lbPremises.Items.Count - 1;
+            lbConditions.SelectedIndex = lbConditions.Items.Count - 1;
         }
 
 
         private void buttonEditConclusion_Click(object sender, EventArgs e)
         {
-            var f = new FormStatement(FormStatement.Modes.edit, FactType.conclusion, _kBase, _rule, lbPremises.SelectedIndex);
+            var f = new FormStatement(FormStatement.Modes.edit, FactType.conclusion, _kBase, _rule, lbConditions.SelectedIndex);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillList();
             lbConclusion.SelectedIndex = lbConclusion.Items.Count - 1;
@@ -121,9 +128,9 @@ namespace ES.Forms
 
         private void buttonDeletePremise_Click(object sender, EventArgs e)
         {
-            _rule.DeletePremiseFact(lbPremises.SelectedIndex);
+            _rule.DeletePremiseFact(lbConditions.SelectedIndex);
             FillList();
-            lbPremises.SelectedIndex = _rule.Condition.Count - 1;
+            lbConditions.SelectedIndex = _rule.Condition.Count - 1;
         }
 
         private void buttonDeleteConclusion_Click(object sender, EventArgs e)
@@ -186,6 +193,46 @@ namespace ES.Forms
         private void btCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btConditionUp_Click(object sender, EventArgs e)
+        {
+            var oldId = lbConditions.SelectedIndex;
+            var old = _rule.Condition[oldId];
+            lbConditions.Items.RemoveAt(oldId);
+            lbConditions.Items.Insert(oldId-1, old.ToString());
+            _rule.Condition[oldId] = _rule.Condition[oldId - 1];
+            _rule.Condition[oldId - 1] = old;
+        }
+
+        private void btConditionDown_Click(object sender, EventArgs e)
+        {
+            var oldId = lbConditions.SelectedIndex;
+            var old = _rule.Condition[oldId];
+            lbConditions.Items.RemoveAt(oldId);
+            lbConditions.Items.Insert(oldId+1, old.ToString());
+            _rule.Condition[oldId] = _rule.Condition[oldId + 1];
+            _rule.Condition[oldId + 1] = old;
+        }
+        
+        private void btConclusionUp_Click(object sender, EventArgs e)
+        {
+            var oldId = lbConclusion.SelectedIndex;
+            var old = _rule.Conclusion[oldId];
+            lbConclusion.Items.RemoveAt(oldId);
+            lbConclusion.Items.Insert(oldId-1, old.ToString());
+            _rule.Conclusion[oldId] = _rule.Conclusion[oldId - 1];
+            _rule.Conclusion[oldId - 1] = old;
+        }
+
+        private void btConclusionDown_Click(object sender, EventArgs e)
+        {
+            var oldId = lbConclusion.SelectedIndex;
+            var old = _rule.Conclusion[oldId];
+            lbConclusion.Items.RemoveAt(oldId);
+            lbConclusion.Items.Insert(oldId+1, old.ToString());
+            _rule.Conclusion[oldId] = _rule.Conclusion[oldId + 1];
+            _rule.Conclusion[oldId + 1] = old;
         }
     }
 }

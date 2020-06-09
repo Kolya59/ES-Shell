@@ -35,7 +35,7 @@ namespace ES.Forms
             this.tbRuleName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.lbPremises = new System.Windows.Forms.ListBox();
+            this.lbConditions = new System.Windows.Forms.ListBox();
             this.btDeletePremise = new System.Windows.Forms.Button();
             this.btEditPremise = new System.Windows.Forms.Button();
             this.btAddPremise = new System.Windows.Forms.Button();
@@ -48,6 +48,10 @@ namespace ES.Forms
             this.btAddConclusion = new System.Windows.Forms.Button();
             this.btOk = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
+            this.btConditionUp = new System.Windows.Forms.Button();
+            this.btConditionDown = new System.Windows.Forms.Button();
+            this.btConclusionUp = new System.Windows.Forms.Button();
+            this.btConclusionDown = new System.Windows.Forms.Button();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -77,28 +81,29 @@ namespace ES.Forms
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.lbPremises);
+            this.groupBox6.Controls.Add(this.lbConditions);
             this.groupBox6.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.groupBox6.ForeColor = System.Drawing.Color.Black;
             this.groupBox6.Location = new System.Drawing.Point(11, 55);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(248, 109);
+            this.groupBox6.Size = new System.Drawing.Size(214, 109);
             this.groupBox6.TabIndex = 16;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Condition";
             // 
             // lbPremises
             // 
-            this.lbPremises.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lbPremises.FormattingEnabled = true;
-            this.lbPremises.Location = new System.Drawing.Point(4, 20);
-            this.lbPremises.Margin = new System.Windows.Forms.Padding(2);
-            this.lbPremises.Name = "lbPremises";
-            this.lbPremises.Size = new System.Drawing.Size(234, 82);
-            this.lbPremises.TabIndex = 0;
-            this.lbPremises.SelectedIndexChanged += new System.EventHandler(this.listBoxPremises_SelectedIndexChanged);
+            this.lbConditions.AllowDrop = true;
+            this.lbConditions.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lbConditions.FormattingEnabled = true;
+            this.lbConditions.Location = new System.Drawing.Point(4, 20);
+            this.lbConditions.Margin = new System.Windows.Forms.Padding(2);
+            this.lbConditions.Name = "lbConditions";
+            this.lbConditions.Size = new System.Drawing.Size(200, 82);
+            this.lbConditions.TabIndex = 0;
+            this.lbConditions.SelectedIndexChanged += new System.EventHandler(this.listBoxPremises_SelectedIndexChanged);
             // 
             // btDeletePremise
             // 
@@ -174,7 +179,7 @@ namespace ES.Forms
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(248, 109);
+            this.groupBox1.Size = new System.Drawing.Size(214, 109);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Conclusion";
@@ -186,7 +191,7 @@ namespace ES.Forms
             this.lbConclusion.Location = new System.Drawing.Point(4, 18);
             this.lbConclusion.Margin = new System.Windows.Forms.Padding(2);
             this.lbConclusion.Name = "lbConclusion";
-            this.lbConclusion.Size = new System.Drawing.Size(234, 82);
+            this.lbConclusion.Size = new System.Drawing.Size(200, 82);
             this.lbConclusion.TabIndex = 0;
             this.lbConclusion.SelectedIndexChanged += new System.EventHandler(this.listBoxConclusion_SelectedIndexChanged);
             // 
@@ -258,12 +263,72 @@ namespace ES.Forms
             this.btCancel.UseVisualStyleBackColor = false;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
+            // btConditionUp
+            // 
+            this.btConditionUp.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (192)))));
+            this.btConditionUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btConditionUp.ForeColor = System.Drawing.Color.Black;
+            this.btConditionUp.Image = ((System.Drawing.Image) (resources.GetObject("btConditionUp.Image")));
+            this.btConditionUp.Location = new System.Drawing.Point(219, 75);
+            this.btConditionUp.Margin = new System.Windows.Forms.Padding(2);
+            this.btConditionUp.Name = "btConditionUp";
+            this.btConditionUp.Size = new System.Drawing.Size(46, 43);
+            this.btConditionUp.TabIndex = 31;
+            this.btConditionUp.UseVisualStyleBackColor = false;
+            this.btConditionUp.Click += new System.EventHandler(this.btConditionUp_Click);
+            // 
+            // btConditionDown
+            // 
+            this.btConditionDown.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (192)))));
+            this.btConditionDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btConditionDown.ForeColor = System.Drawing.Color.Black;
+            this.btConditionDown.Image = ((System.Drawing.Image) (resources.GetObject("btConditionDown.Image")));
+            this.btConditionDown.Location = new System.Drawing.Point(219, 122);
+            this.btConditionDown.Margin = new System.Windows.Forms.Padding(2);
+            this.btConditionDown.Name = "btConditionDown";
+            this.btConditionDown.Size = new System.Drawing.Size(46, 35);
+            this.btConditionDown.TabIndex = 32;
+            this.btConditionDown.UseVisualStyleBackColor = false;
+            this.btConditionDown.Click += new System.EventHandler(this.btConditionDown_Click);
+            // 
+            // btConclusionUp
+            // 
+            this.btConclusionUp.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (192)))));
+            this.btConclusionUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btConclusionUp.ForeColor = System.Drawing.Color.Black;
+            this.btConclusionUp.Image = ((System.Drawing.Image) (resources.GetObject("btConclusionUp.Image")));
+            this.btConclusionUp.Location = new System.Drawing.Point(219, 187);
+            this.btConclusionUp.Margin = new System.Windows.Forms.Padding(2);
+            this.btConclusionUp.Name = "btConclusionUp";
+            this.btConclusionUp.Size = new System.Drawing.Size(46, 37);
+            this.btConclusionUp.TabIndex = 33;
+            this.btConclusionUp.UseVisualStyleBackColor = false;
+            this.btConclusionUp.Click += new System.EventHandler(this.btConclusionUp_Click);
+            // 
+            // btConclusionDown
+            // 
+            this.btConclusionDown.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (192)))));
+            this.btConclusionDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btConclusionDown.ForeColor = System.Drawing.Color.Black;
+            this.btConclusionDown.Image = ((System.Drawing.Image) (resources.GetObject("btConclusionDown.Image")));
+            this.btConclusionDown.Location = new System.Drawing.Point(219, 228);
+            this.btConclusionDown.Margin = new System.Windows.Forms.Padding(2);
+            this.btConclusionDown.Name = "btConclusionDown";
+            this.btConclusionDown.Size = new System.Drawing.Size(46, 41);
+            this.btConclusionDown.TabIndex = 34;
+            this.btConclusionDown.UseVisualStyleBackColor = false;
+            this.btConclusionDown.Click += new System.EventHandler(this.btConclusionDown_Click);
+            // 
             // FormRule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(310, 369);
+            this.Controls.Add(this.btConclusionDown);
+            this.Controls.Add(this.btConclusionUp);
+            this.Controls.Add(this.btConditionDown);
+            this.Controls.Add(this.btConditionUp);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.btDeleteConclusion);
@@ -292,6 +357,10 @@ namespace ES.Forms
         private System.Windows.Forms.Button btAddConclusion;
         private System.Windows.Forms.Button btAddPremise;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btConclusionDown;
+        private System.Windows.Forms.Button btConclusionUp;
+        private System.Windows.Forms.Button btConditionDown;
+        private System.Windows.Forms.Button btConditionUp;
         private System.Windows.Forms.Button btDeleteConclusion;
         private System.Windows.Forms.Button btDeletePremise;
         private System.Windows.Forms.Button btEditConclusion;
@@ -302,7 +371,7 @@ namespace ES.Forms
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbConclusion;
-        private System.Windows.Forms.ListBox lbPremises;
+        private System.Windows.Forms.ListBox lbConditions;
         private System.Windows.Forms.TextBox tbReason;
         private System.Windows.Forms.TextBox tbRuleName;
 
