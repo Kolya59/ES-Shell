@@ -552,7 +552,7 @@ namespace ES
                 var formResult = new FormResultConsult(inferenceEngine, result.ToString());
                 formResult.ShowDialog();
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 MessageBox.Show("Goal is not reached", "Error");
             }
