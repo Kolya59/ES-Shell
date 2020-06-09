@@ -41,9 +41,18 @@ namespace ES.Models
             _explainNodes = new List<ExplainNode>();
             _goals.Push(PrimaryGoal);
             var counter = 1;
+            var hGoals = 0;
+            var hWorkingMemory = 0;
+            var hExecutedRules = 0;
+            var hWrongRules = 0;
             // Пока не означены все целевые переменные
             while(_goals.Count > 0)
             {
+                if (hGoals == _goals.GetHashCode() && hWorkingMemory == WorkingMemory.GetHashCode() &&
+                    hExecutedRules == _executedRules.GetHashCode() && hWrongRules == _wrongRules.GetHashCode())
+                {
+                    throw new Exception("Goal is not reached");
+                }
                 // Получаем очередную цель
                 var currentGoal = _goals.Peek();
                 // Если целевая переменная означена - переходим к следующей

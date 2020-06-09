@@ -185,7 +185,7 @@ namespace ES
             this.cbGoal.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbGoal.Name = "cbGoal";
             this.cbGoal.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
-            this.cbGoal.Size = new System.Drawing.Size(200, 23);
+            this.cbGoal.Size = new System.Drawing.Size(80, 23);
             this.cbGoal.SelectedIndexChanged += new System.EventHandler(this.cbGoal_SelectedIndexChanged);
             // 
             // goalToolStripMenuItem

@@ -76,6 +76,7 @@ namespace ES
             splitContainerDomains.SplitterDistance = Width - 230;
             splitContainerRules.SplitterDistance = Width - 230;
             splitContainerVars.SplitterDistance = Width - 230;
+            lvRules.Columns[1].Width = lvRules.Width - lvRules.Columns[0].Width;
         }
 
         private void Save()
@@ -525,14 +526,21 @@ namespace ES
             }
             inferenceEngine = new InferenceEngine(_knowledgeBase);
             inferenceEngine.SetPrimaryGoal(_goal);
-            var result = inferenceEngine.Start();
-            if (result == null)
+            try
             {
-                MessageBox.Show("Failed to deduce goal", "Error");
-                return;
+                var result = inferenceEngine.Start();
+                if (result == null)
+                {
+                    MessageBox.Show("Failed to deduce goal", "Error");
+                    return;
+                }
+                var formResult = new FormResultConsult(inferenceEngine, result.ToString());
+                formResult.ShowDialog();
             }
-            var formResult = new FormResultConsult(inferenceEngine, result.ToString());
-            formResult.ShowDialog();
+            catch (Exception exception)
+            {
+                MessageBox.Show("Goal is not reached", "Error");
+            }
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
