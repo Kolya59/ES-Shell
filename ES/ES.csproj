@@ -94,12 +94,6 @@
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Variable.cs" />
-    <Compile Include="Forms\FormChooseGoal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormChooseGoal.Designer.cs">
-      <DependentUpon>FormChooseGoal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormDomain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,9 +144,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FormChooseGoal.resx">
-      <DependentUpon>FormChooseGoal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDomain.resx">
       <DependentUpon>FormDomain.cs</DependentUpon>
     </EmbeddedResource>

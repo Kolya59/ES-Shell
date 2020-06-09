@@ -12,7 +12,7 @@ namespace ES
     public partial class MainForm : Form
     {
         private KnowledgeBase _knowledgeBase;
-        public InferenceEngine inferenceEngine;
+        private InferenceEngine _inferenceEngine;
 
         private bool _kBaseChanged;
         private string _fileName;
@@ -137,14 +137,15 @@ namespace ES
             }
 
             cbGoal.Items.Clear();
-            foreach (var variable in _knowledgeBase.Vars.Where(v => v.Type != VariableType.queried))
+            var candidates = _knowledgeBase.Vars.Where(v => v.Type != VariableType.queried).ToList();
+            foreach (var variable in candidates)
             {
                 cbGoal.Items.Add(variable.Name);
             }
 
-            if (_knowledgeBase.Vars.Exists(v => v == _goal))
+            if (candidates.ToList().Exists(v => v == _goal))
             {
-                cbGoal.Select(_knowledgeBase.Vars.FindIndex(v => v == _goal), 0);
+                cbGoal.SelectedIndex = candidates.ToList().FindIndex(v => v == _goal);
             }
             else
             {
@@ -485,11 +486,21 @@ namespace ES
                 Cursor = Cursors.Default;
                 return;
             }
-            var r = _knowledgeBase.Vars[_dropped.Index];
-            _knowledgeBase.Vars.RemoveAt(_dropped.Index);
-            _knowledgeBase.Vars.Insert(itemOver.Index, r);
-            lvVars.Items.Remove(_dropped);
-            lvVars.Items.Insert(itemOver.Index, _dropped);
+            var v = _knowledgeBase.Vars[_dropped.Index];
+            if (itemOver.Index > _dropped.Index)
+            {
+                _knowledgeBase.Vars.RemoveAt(_dropped.Index);
+                _knowledgeBase.Vars.Insert(itemOver.Index, v);
+                lvVars.Items.Remove(_dropped);
+                lvVars.Items.Insert(itemOver.Index + 1, _dropped);
+            }
+            else
+            {
+                _knowledgeBase.Vars.RemoveAt(_dropped.Index);
+                _knowledgeBase.Vars.Insert(itemOver.Index, v);
+                lvVars.Items.Remove(_dropped);
+                lvVars.Items.Insert(itemOver.Index, _dropped);
+            }
       
             Cursor = Cursors.Default;
             _knowledgeBase.IsChanged = true;
@@ -539,17 +550,17 @@ namespace ES
                 MessageBox.Show("Goal is not choosen", "Error");
                 return;
             }
-            inferenceEngine = new InferenceEngine(_knowledgeBase);
-            inferenceEngine.SetPrimaryGoal(_goal);
+            _inferenceEngine = new InferenceEngine(_knowledgeBase);
+            _inferenceEngine.SetPrimaryGoal(_goal);
             try
             {
-                var result = inferenceEngine.Start();
+                var result = _inferenceEngine.Start();
                 if (result == null)
                 {
                     MessageBox.Show("Failed to deduce goal", "Error");
                     return;
                 }
-                var formResult = new FormResultConsult(inferenceEngine, result.ToString());
+                var formResult = new FormResultConsult(_inferenceEngine, result.ToString());
                 formResult.ShowDialog();
             }
             catch (Exception)
@@ -595,18 +606,33 @@ namespace ES
         private void menuExplanation_Click(object sender, EventArgs e)
         {
             // TODO: Check invalid goal
-            if (inferenceEngine?.ExplainTree == null)
+            if (_inferenceEngine?.ExplainTree == null)
             {
                 MessageBox.Show("Consultation is not finished", "Error");
                 return;
             }
-            var f = new FormExplain(inferenceEngine.ExplainTree, inferenceEngine.log, inferenceEngine.WorkingMemory);
+            var f = new FormExplain(_inferenceEngine.ExplainTree, _inferenceEngine.log, _inferenceEngine.WorkingMemory);
             f.ShowDialog();
         }
 
         private void cbGoal_SelectedIndexChanged(object sender, EventArgs e)
         {
             _goal = _knowledgeBase.Vars.Find(v => v.Name == (string) ((ToolStripComboBox) sender).SelectedItem);
+        }
+
+        private void lvRules_Leave(object sender, EventArgs e)
+        {
+            //lvRules.Select();
+        }
+        
+        private void lvVars_Leave(object sender, EventArgs e)
+        {
+            //lvVars.Select();
+        }
+        
+        private void lvDomains_Leave(object sender, EventArgs e)
+        {
+            //lvDomains.Select();
         }
     }
 }

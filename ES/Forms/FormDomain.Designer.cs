@@ -172,7 +172,7 @@ namespace ES.Forms
             this.btOk.UseVisualStyleBackColor = false;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
-            // FormAddDomain
+            // FormDomain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -189,7 +189,7 @@ namespace ES.Forms
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormAddDomain";
+            this.Name = "FormDomain";
             this.Text = "Domain";
             this.ResumeLayout(false);
             this.PerformLayout();

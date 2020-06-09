@@ -77,7 +77,7 @@ namespace ES.Models
                 // Поиск несработавшего правила с целевой переменной в заключении
                 var r = _kBase.Rules.Except(_executedRules)
                     .Except(_wrongRules)
-                    .First(rule => rule.Conclusion.Exists(c => c.Variable.Name == currentGoal.Name));
+                    .FirstOrDefault(rule => rule.Conclusion.Exists(c => c.Variable.Name == currentGoal.Name));
                 if (r != null)
                 {
                     var foundNewGoal = false;
@@ -117,7 +117,7 @@ namespace ES.Models
                     // Если это выводимо-запрашиваемая, но не ГЛАВНАЯ ЦЕЛЬ, то запросить
                     if (currentGoal.Type != VariableType.queryDeduced)
                     {
-                        return null;
+                        throw new Exception("Goal is not reached");
                     }
 
                     var statement = new Statement {Variable = currentGoal};

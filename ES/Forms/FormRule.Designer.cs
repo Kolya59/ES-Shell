@@ -57,22 +57,21 @@ namespace ES.Forms
             // 
             this.tbRuleName.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbRuleName.Font = new System.Drawing.Font("Arial", 8F);
-            this.tbRuleName.Location = new System.Drawing.Point(11, 28);
+            this.tbRuleName.Location = new System.Drawing.Point(15, 28);
             this.tbRuleName.Margin = new System.Windows.Forms.Padding(2);
             this.tbRuleName.Multiline = true;
             this.tbRuleName.Name = "tbRuleName";
-            this.tbRuleName.Size = new System.Drawing.Size(285, 19);
+            this.tbRuleName.Size = new System.Drawing.Size(281, 19);
             this.tbRuleName.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label1.Location = new System.Drawing.Point(11, 9);
+            this.label1.Location = new System.Drawing.Point(15, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(38, 14);
             this.label1.TabIndex = 11;
             this.label1.Text = "Name";
             // 
@@ -159,11 +158,11 @@ namespace ES.Forms
             // 
             this.tbReason.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbReason.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.tbReason.Location = new System.Drawing.Point(4, 17);
+            this.tbReason.Location = new System.Drawing.Point(0, 17);
             this.tbReason.Margin = new System.Windows.Forms.Padding(2);
             this.tbReason.Multiline = true;
             this.tbReason.Name = "tbReason";
-            this.tbReason.Size = new System.Drawing.Size(230, 59);
+            this.tbReason.Size = new System.Drawing.Size(234, 59);
             this.tbReason.TabIndex = 0;
             // 
             // groupBox1
@@ -259,7 +258,7 @@ namespace ES.Forms
             this.btCancel.UseVisualStyleBackColor = false;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
-            // FormAddRule
+            // FormRule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

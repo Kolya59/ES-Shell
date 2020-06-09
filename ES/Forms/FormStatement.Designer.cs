@@ -117,7 +117,7 @@ namespace ES.Forms
             this.btOk.UseVisualStyleBackColor = false;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
-            // FormAddStatement
+            // FormStatement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
