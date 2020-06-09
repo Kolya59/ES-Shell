@@ -40,6 +40,7 @@ namespace ES.Models
             log = new List<Log>();
             _explainNodes = new List<ExplainNode>();
             _goals.Push(PrimaryGoal);
+            var counter = 1;
             // Пока не означены все целевые переменные
             while(_goals.Count > 0)
             {
@@ -55,7 +56,8 @@ namespace ES.Models
                 if (currentGoal.Type == VariableType.queried)
                 {
                     var statement = new Statement {Variable = currentGoal};
-                    if (DialogResult.OK != new FormAsk(statement).ShowDialog()) return null;
+                    if (DialogResult.OK != new FormAsk(statement, counter).ShowDialog()) return null;
+                    counter++;
                     _goals.Pop();
                     WorkingMemory.Add(statement);
                     log.Add(new Log(statement.Variable.Question, statement.Value));
@@ -110,7 +112,8 @@ namespace ES.Models
                     }
 
                     var statement = new Statement {Variable = currentGoal};
-                    var f = new FormAsk(statement);
+                    var f = new FormAsk(statement, counter);
+                    counter++;
                     if (DialogResult.OK != f.ShowDialog())
                     {
                         return null;

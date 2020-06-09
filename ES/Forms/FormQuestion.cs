@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using ES.Models;
 
 namespace ES.Forms
@@ -8,7 +9,7 @@ namespace ES.Forms
     public partial class FormAsk : Form
     {
         private readonly Statement _statement;
-        public FormAsk(Statement statement)
+        public FormAsk(Statement statement, int number)
         {
             InitializeComponent();
             CenterToScreen();
@@ -30,6 +31,7 @@ namespace ES.Forms
             }
             gbAnswers.Height = 20 + 30 * statement.Variable.Domain.Values.Count;
             Height = gbAnswers.Height + 170;
+            Text = $@"Question №{number}";
         }
 
         private void btChosen_Click(object sender, EventArgs e)
