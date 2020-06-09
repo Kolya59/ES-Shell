@@ -91,7 +91,7 @@ namespace ES.Models
         #endregion
 
         #region Vars
-        public bool AddVar(int idx, Variable var)
+        public bool AddVar(Variable var, int idx)
         {
             if (Vars.Exists(x => x.Name == var.Name))
             {
@@ -103,7 +103,7 @@ namespace ES.Models
                 DomainCantBeEmptyError();
                 return false;
             }
-            Vars.Insert(idx, var);
+            Vars.Insert(idx - 1, var);
             IsChanged = true;
             LastVarNumber++;
             return true;

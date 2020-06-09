@@ -171,7 +171,7 @@ namespace ES
         #region Domains
         private void buttonAddDomain_Click(object sender, EventArgs e)
         {
-            var idx = lvDomains.SelectedIndices.Count > 0 ? lvDomains.SelectedIndices[0] : _knowledgeBase.LastDomainNumber - 1;
+            var idx = lvDomains.SelectedIndices.Count > 0 ? lvDomains.SelectedIndices[0] : _knowledgeBase.Domains.Count - 1;
             var f = new FormAddDomain(idx, FormAddDomain.Modes.add, _knowledgeBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillDomains();
@@ -233,7 +233,12 @@ namespace ES
         #region Vars
         private void buttonAddVar_Click(object sender, EventArgs e)
         {
-            var f = new FormAddVar(FormAddVar.Modes.add, _knowledgeBase);
+            var f = lvVars.SelectedIndices.Count != 0
+                ? new FormAddVar(FormAddVar.Modes.add,
+                    _knowledgeBase,
+                    lvVars.SelectedIndices[0] + 1)
+                : new FormAddVar(FormAddVar.Modes.add,
+                    _knowledgeBase);
             if (f.ShowDialog() != DialogResult.OK) return;
             FillVars();
             FillDomains();
@@ -367,7 +372,7 @@ namespace ES
         #region File
         private void menuFile_New_Click(object sender, EventArgs e)
         {
-            if (_kBaseChanged && MessageBox.Show("Do you want to save results?", "Save?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to save results?", "Save?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (_fileName == "")
                 {
@@ -434,11 +439,21 @@ namespace ES
                 return;
             }
             var r = _knowledgeBase.Rules[_dropped.Index];
-            _knowledgeBase.Rules.RemoveAt(_dropped.Index);
-            _knowledgeBase.Rules.Insert(itemOver.Index, r);
-            lvRules.Items.Remove(_dropped);
-            lvRules.Items.Insert(itemOver.Index, _dropped);
-            
+            if (itemOver.Index > _dropped.Index)
+            {
+                _knowledgeBase.Rules.RemoveAt(_dropped.Index);
+                _knowledgeBase.Rules.Insert(itemOver.Index, r);
+                lvRules.Items.Remove(_dropped);
+                lvRules.Items.Insert(itemOver.Index + 1, _dropped);
+            }
+            else
+            {
+                _knowledgeBase.Rules.RemoveAt(_dropped.Index);
+                _knowledgeBase.Rules.Insert(itemOver.Index, r);
+                lvRules.Items.Remove(_dropped);
+                lvRules.Items.Insert(itemOver.Index, _dropped);
+            }
+
             Cursor = Cursors.Default;
             _knowledgeBase.IsChanged = true;
         }
@@ -562,8 +577,7 @@ namespace ES
                 // ignored
             }
 
-            if (!_kBaseChanged &&
-                MessageBox.Show("Do you want to save results?",
+            if (MessageBox.Show("Do you want to save results?",
                     "Save?",
                     MessageBoxButtons.YesNo) !=
                 DialogResult.Yes)

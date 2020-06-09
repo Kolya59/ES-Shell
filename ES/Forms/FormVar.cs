@@ -15,32 +15,41 @@ namespace ES.Forms
         private readonly int _indexVar;
         private bool _customQuestionText;
 
-        // Add variable
         public FormAddVar(Modes mode, KnowledgeBase kBase)
         {
             InitializeComponent();
             _mode = mode;
             _kBase = kBase;
             _var = new Variable();
-            _indexVar = _kBase.LastVarNumber - 1;
+            _indexVar = _kBase.Vars.Count + 1;
             SetStyle();
             FillList();
             tbVarName.Text = $@"Var {kBase.Vars.Count}";
         }
 
-        // Edit variable
         public FormAddVar(Modes mode, KnowledgeBase kBase, int indexVar)
         {
             InitializeComponent();
             _mode = mode;
             _kBase = kBase;
-            _var = kBase.Vars[indexVar].Copy();
-            _indexVar = indexVar;
-            SetStyle();
-            FillForm();
-            if (_var.Question != _var.Name + "?")
-                _customQuestionText = true;
-            comboBoxDomain.SelectedIndex = kBase.Domains.FindIndex(x => _var.Domain.Name == x.Name);
+            if (mode == Modes.add)
+            {
+                _var = new Variable();
+                _indexVar = indexVar + 1;
+                SetStyle();
+                FillList();
+                tbVarName.Text = $@"Var {kBase.Vars.Count}";
+            }
+            else
+            {
+                _var = kBase.Vars[indexVar].Copy();
+                _indexVar = indexVar;
+                SetStyle();
+                FillForm();
+                if (_var.Question != _var.Name + "?")
+                    _customQuestionText = true;
+                comboBoxDomain.SelectedIndex = kBase.Domains.FindIndex(x => _var.Domain.Name == x.Name);
+            }
         }
 
         private void SetStyle()
@@ -158,7 +167,7 @@ namespace ES.Forms
             _var.Domain = _kBase.Domains[comboBoxDomain.SelectedIndex];
             if (_mode == Modes.add)
             {
-                if (!_kBase.AddVar(_indexVar - 1, _var))
+                if (!_kBase.AddVar(_var, _indexVar))
                     return;
             }
             else

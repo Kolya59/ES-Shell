@@ -23,7 +23,7 @@ namespace ES.Forms
             _domain = new Domain();
             tbDomainName.Text = $@"Domain {kBase.Domains.Count}";
             CenterToScreen();
-            _insertAfterIdx = insertAfterIdx;
+            _insertAfterIdx = insertAfterIdx + 1;
             CheckControls();
         }
 
